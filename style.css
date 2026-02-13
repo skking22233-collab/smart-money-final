@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary: #10b981;
+            --primary: #059669; /* Darkened for better contrast */
             --primary-dark: #059669;
             --secondary: #1e293b;
             --accent: #f59e0b;
@@ -518,7 +518,7 @@
 
         .footer-logo .logo-icon { font-size: 1.5rem; }
         .footer-logo .logo-name { font-size: 1.3rem; font-weight: 700; color: white; }
-        .footer-desc { color: #94a3b8; font-size: 0.9rem; }
+        .footer-desc { color: #a7a7a7; font-size: 0.9rem; }
 
         .footer-col h4 { font-size: 1.1rem; margin-bottom: 20px; }
         .footer-col ul { list-style: none; }
@@ -530,7 +530,7 @@
             border-top: 1px solid #334155;
             padding-top: 20px;
             text-align: center;
-            color: #64748b;
+            color: #a7a7a7;
             font-size: 0.85rem;
         }
 
