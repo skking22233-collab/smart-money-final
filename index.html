@@ -634,28 +634,28 @@
                 </a>
                 
                 <nav class="nav" id="mainNav">
-                    <a href="#" class="nav-link active" id="homeNavLink">Home</a>
+                    <a href="/" class="nav-link active" id="homeNavLink">Home</a>
                     
                     <div class="dropdown" id="categoryDropdown">
                         <a href="#" class="nav-link dropdown-toggle">
                             Categories <span class="arrow">▼</span>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item" data-category="banking">🏦 Banking & Wallets</a>
-                            <a href="#" class="dropdown-item" data-category="crypto">₿ Crypto Updates</a>
-                            <a href="#" class="dropdown-item" data-category="gold">🥇 Gold & Silver</a>
-                            <a href="#" class="dropdown-item" data-category="stocks">📈 Stock Market</a>
-                            <a href="#" class="dropdown-item" data-category="earning">💻 Online Earning</a>
-                            <a href="#" class="dropdown-item" data-category="finance">💰 Personal Finance</a>
-                            <a href="#" class="dropdown-item" data-category="mutual">📊 Mutual Funds</a>
-                            <a href="#" class="dropdown-item" data-category="halal">☪️ Halal Investing</a>
+                            <a href="/category/banking" class="dropdown-item" data-category="banking">🏦 Banking & Wallets</a>
+                            <a href="/category/crypto" class="dropdown-item" data-category="crypto">₿ Crypto Updates</a>
+                            <a href="/category/gold" class="dropdown-item" data-category="gold">🥇 Gold & Silver</a>
+                            <a href="/category/stocks" class="dropdown-item" data-category="stocks">📈 Stock Market</a>
+                            <a href="/category/earning" class="dropdown-item" data-category="earning">💻 Online Earning</a>
+                            <a href="/category/finance" class="dropdown-item" data-category="finance">💰 Personal Finance</a>
+                            <a href="/category/mutual" class="dropdown-item" data-category="mutual">📊 Mutual Funds</a>
+                            <a href="/category/halal" class="dropdown-item" data-category="halal">☪️ Halal Investing</a>
                         </div>
                     </div>
                     
-                    <a href="#" class="nav-link page-nav-link" data-page="about">About</a>
-                    <a href="#" class="nav-link page-nav-link" data-page="contact">Contact</a>
-                    <a href="#" class="nav-link page-nav-link" data-page="disclaimer">Disclaimer</a>
-                    <a href="#" class="nav-link page-nav-link" data-page="privacy">Privacy Policy</a>
+                    <a href="/page/about" class="nav-link page-nav-link" data-page="about">About</a>
+                    <a href="/page/contact" class="nav-link page-nav-link" data-page="contact">Contact</a>
+                    <a href="/page/disclaimer" class="nav-link page-nav-link" data-page="disclaimer">Disclaimer</a>
+                    <a href="/page/privacy" class="nav-link page-nav-link" data-page="privacy">Privacy Policy</a>
                 </nav>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -876,25 +876,25 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#" id="footerHome">Home</a></li>
-                        <li><a href="#" class="footer-page-link" data-page="about">About Us</a></li>
-                        <li><a href="#" class="footer-page-link" data-page="contact">Contact</a></li>
+                        <li><a href="/" id="footerHome">Home</a></li>
+                        <li><a href="/page/about" class="footer-page-link" data-page="about">About Us</a></li>
+                        <li><a href="/page/contact" class="footer-page-link" data-page="contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Categories</h4>
                     <ul>
-                        <li><a href="#" class="footer-cat-link" data-category="banking">Banking & Wallets</a></li>
-                        <li><a href="#" class="footer-cat-link" data-category="crypto">Crypto Updates</a></li>
-                        <li><a href="#" class="footer-cat-link" data-category="stocks">Stock Market</a></li>
-                        <li><a href="#" class="footer-cat-link" data-category="halal">Halal Investing</a></li>
+                        <li><a href="/category/banking" class="footer-cat-link" data-category="banking">Banking & Wallets</a></li>
+                        <li><a href="/category/crypto" class="footer-cat-link" data-category="crypto">Crypto Updates</a></li>
+                        <li><a href="/category/stocks" class="footer-cat-link" data-category="stocks">Stock Market</a></li>
+                        <li><a href="/category/halal" class="footer-cat-link" data-category="halal">Halal Investing</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#" class="footer-page-link" data-page="disclaimer">Disclaimer</a></li>
-                        <li><a href="#" class="footer-page-link" data-page="privacy">Privacy Policy</a></li>
+                        <li><a href="/page/disclaimer" class="footer-page-link" data-page="disclaimer">Disclaimer</a></li>
+                        <li><a href="/page/privacy" class="footer-page-link" data-page="privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -2668,7 +2668,21 @@
             
             let currentCategory = null;
 
-            // Initialize
+            function slugify(text) {
+                return text.toString().toLowerCase()
+                    .replace(/\s+/g, '-')           // Replace spaces with -
+                    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                    .replace(/^-+/, '')             // Trim - from start of text
+                    .replace(/-+$/, '');            // Trim - from end of text
+            }
+
+            // --- Initialize ---
+            // Add slugs to all articles
+            articles.forEach(article => {
+                article.slug = slugify(article.title);
+            });
+
             document.getElementById('articleCount').textContent = articles.length + '+';
             loadCategories();
             loadFeaturedArticles();
@@ -2739,24 +2753,21 @@
                         </div>
                     </div>
                 `).join('');
-
-                // Re-attach click events
-                attachArticleClicks();
             }
 
-            function attachArticleClicks() {
-                document.querySelectorAll('.article-card, .featured-card').forEach(card => {
-                    card.onclick = () => openArticle(card.dataset.id);
-                });
-            }
-
-            function openArticle(id) {
+            function showArticle(id) {
                 const article = articles.find(a => a.id == id);
-                if (!article) return;
+                if (!article) {
+                    showHome(); // Fallback to home if article not found
+                    return;
+                }
 
                 hideAllSections();
                 document.getElementById('singleArticle').style.display = 'block';
                 
+                document.title = `${article.title} | Smart Money`;
+                document.querySelector('meta[name="description"]').setAttribute('content', article.excerpt);
+
                 document.getElementById('articleContent').innerHTML = `
                     <img src="${article.image}" alt="${article.title}" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.minHeight='300px';">
                     <div class="article-full-content">
@@ -2789,24 +2800,20 @@
                 document.getElementById('singleArticle').style.display = 'none';
                 document.getElementById('newsletterSection').style.display = 'none';
                 filterBanner.style.display = 'none';
-                hideAllPages();
-            }
-
-            function hideAllPages() {
                 document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
             }
 
             function showHome() {
+                hideAllSections();
                 document.getElementById('heroSection').style.display = 'block';
                 document.getElementById('categoriesSection').style.display = 'block';
                 document.getElementById('featuredSection').style.display = 'block';
                 document.getElementById('articlesSection').style.display = 'block';
                 document.getElementById('newsletterSection').style.display = 'block';
-                document.getElementById('singleArticle').style.display = 'none';
-                hideAllPages();
-                currentCategory = null;
                 loadAllArticles();
                 window.scrollTo(0, 0);
+                document.title = "Smart Money - Smart Money Decisions | Financial Freedom";
+                document.querySelector('meta[name="description"]').setAttribute('content', "Smart Money - Expert insights on banking, crypto, gold, stocks, halal investing, mutual funds, personal finance and online earning. Your trusted source for financial freedom.");
             }
 
             function showPage(pageId) {
@@ -2816,82 +2823,137 @@
                     page.style.display = 'block';
                     document.getElementById('newsletterSection').style.display = 'block';
                     window.scrollTo(0, 0);
+                    // Dynamically set title and description for specific pages
+                    switch(pageId) {
+                        case 'about':
+                            document.title = "About Us | Smart Money";
+                            document.querySelector('meta[name="description"]').setAttribute('content', "Learn about Smart Money - your trusted companion on the journey to financial freedom, covering banking, crypto, stocks, gold, halal investing, and personal finance.");
+                            break;
+                        case 'contact':
+                            document.title = "Contact Us | Smart Money";
+                            document.querySelector('meta[name="description"]').setAttribute('content', "Get in touch with Smart Money. We'd love to hear from you!");
+                            break;
+                        case 'disclaimer':
+                            document.title = "Disclaimer | Smart Money";
+                            document.querySelector('meta[name="description"]').setAttribute('content', "Disclaimer for Smart Money - information for general purposes only, not financial advice.");
+                            break;
+                        case 'privacy':
+                            document.title = "Privacy Policy | Smart Money";
+                            document.querySelector('meta[name="description"]').setAttribute('content', "Privacy Policy for Smart Money - information we collect and how we use it.");
+                            break;
+                        default:
+                            document.title = `${pageId.charAt(0).toUpperCase() + pageId.slice(1)} | Smart Money`;
+                            document.querySelector('meta[name="description"]').setAttribute('content', `Content for the ${pageId} page on Smart Money.`);
+                    }
+                } else {
+                    showHome();
                 }
             }
 
-            function filterByCategory(category) {
-                currentCategory = category;
-                loadAllArticles(category);
-                
-                document.getElementById('heroSection').style.display = 'none';
-                document.getElementById('categoriesSection').style.display = 'none';
-                document.getElementById('featuredSection').style.display = 'none';
+            function showCategory(category) {
+                hideAllSections();
                 document.getElementById('articlesSection').style.display = 'block';
-                document.getElementById('singleArticle').style.display = 'none';
-                hideAllPages();
-                
-                mainNav.classList.remove('active');
+                document.getElementById('newsletterSection').style.display = 'block';
+                loadAllArticles(category);
                 document.getElementById('articlesSection').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // --- Main Router ---
+            function router() {
+                const path = window.location.pathname;
+                
+                if (path === '/' || path === '/index.html') {
+                    showHome();
+                } else if (path.startsWith('/article/')) {
+                    const slug = path.split('/article/')[1];
+                    const article = articles.find(a => a.slug === slug);
+                    if (article) {
+                        showArticle(article.id);
+                    } else {
+                        showHome();
+                    }
+                } else if (path.startsWith('/category/')) {
+                    const category = path.split('/category/')[1];
+                    showCategory(category);
+                } else if (path.startsWith('/page/')) {
+                    const pageId = path.split('/page/')[1];
+                    showPage(pageId);
+                } else {
+                    showHome();
+                }
+                mainNav.classList.remove('active');
             }
 
             function setupEventListeners() {
                 // Mobile menu
                 mobileMenuBtn.onclick = () => mainNav.classList.toggle('active');
 
-                // Home links
-                document.getElementById('homeLink').onclick = (e) => { e.preventDefault(); showHome(); };
-                document.getElementById('homeNavLink').onclick = (e) => { e.preventDefault(); showHome(); mainNav.classList.remove('active'); };
-                document.getElementById('footerHome').onclick = (e) => { e.preventDefault(); showHome(); };
-
-                // Category dropdown items
-                document.querySelectorAll('.dropdown-item').forEach(item => {
-                    item.onclick = (e) => {
+                // --- Navigation clicks ---
+                document.body.addEventListener('click', e => {
+                    const link = e.target.closest('a');
+                    
+                    // Handle article and featured cards
+                    const card = e.target.closest('.article-card, .featured-card');
+                    if (card) {
                         e.preventDefault();
-                        filterByCategory(item.dataset.category);
-                    };
+                        const article = articles.find(a => a.id == card.dataset.id);
+                        if (article) {
+                            history.pushState({articleId: article.id}, '', `/article/${article.slug}`);
+                            router();
+                        }
+                        return;
+                    }
+                    
+                    // Home links
+                    if (e.target.closest('#homeLink, #homeNavLink, #footerHome')) {
+                        e.preventDefault();
+                        history.pushState({page: 'home'}, '', '/');
+                        router();
+                        return;
+                    }
+
+                    // Page links
+                    const pageLink = e.target.closest('.page-nav-link, .footer-page-link');
+                    if (pageLink) {
+                        e.preventDefault();
+                        const pageId = pageLink.dataset.page;
+                        history.pushState({page: pageId}, '', `/page/${pageId}`);
+                        router();
+                        return;
+                    }
+
+                    // Category links
+                    const catLink = e.target.closest('.dropdown-item, .footer-cat-link');
+                    if (catLink) {
+                        e.preventDefault();
+                        const category = catLink.dataset.category;
+                        history.pushState({category: category}, '', `/category/${category}`);
+                        router();
+                        return;
+                    }
+                    
+                    const catCard = e.target.closest('.category-card');
+                    if(catCard) {
+                        e.preventDefault();
+                        const category = catCard.dataset.category;
+                        history.pushState({category: category}, '', `/category/${category}`);
+                        router();
+                        return;
+                    }
                 });
 
-                // Category cards
-                document.getElementById('categoriesGrid').onclick = (e) => {
-                    const card = e.target.closest('.category-card');
-                    if (card) filterByCategory(card.dataset.category);
-                };
 
                 // Clear filter
-                clearFilterBtn.onclick = showHome;
+                clearFilterBtn.onclick = (e) => {
+                    e.preventDefault();
+                    history.pushState({page: 'home'}, '', '/');
+                    router();
+                };
 
-                // Back button
-                document.getElementById('backBtn').onclick = showHome;
-
-                // Page back buttons
+                // Back buttons
+                document.getElementById('backBtn').onclick = () => window.history.back();
                 document.querySelectorAll('.page-back-btn').forEach(btn => {
-                    btn.onclick = showHome;
-                });
-
-                // Nav page links
-                document.querySelectorAll('.page-nav-link').forEach(link => {
-                    link.onclick = (e) => {
-                        e.preventDefault();
-                        showPage(link.dataset.page);
-                        mainNav.classList.remove('active');
-                    };
-                });
-
-                // Footer page links
-                document.querySelectorAll('.footer-page-link').forEach(link => {
-                    link.onclick = (e) => {
-                        e.preventDefault();
-                        showPage(link.dataset.page);
-                    };
-                });
-
-                // Footer category links
-                document.querySelectorAll('.footer-cat-link').forEach(link => {
-                    link.onclick = (e) => {
-                        e.preventDefault();
-                        showHome();
-                        setTimeout(() => filterByCategory(link.dataset.category), 100);
-                    };
+                    btn.onclick = () => window.history.back();
                 });
 
                 // Mobile dropdown toggle
@@ -2914,9 +2976,6 @@
                     alert('Thank you! We will get back to you soon.');
                     e.target.reset();
                 };
-
-                // Initial article clicks
-                attachArticleClicks();
             }
 
             function formatDate(dateString) {
@@ -2927,6 +2986,10 @@
                 const cat = categories.find(c => c.id === id);
                 return cat ? cat.name : id;
             }
+
+            // Initial Load
+            window.addEventListener('popstate', router);
+            router();
         });
 
         function shareOn(platform) {
@@ -2971,4 +3034,3 @@
 
 </body>
 </html>
-
