@@ -2,16 +2,5 @@
   "rewrites": [
     { "source": "/:path((?!static/).*)", "destination": "/index.html" }
   ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Access-Control-Allow-Origin", "value": "https://investmoney.online" }
-      ]
-    }
-  ]
+  "headers": [ ... ]  // headers are fine, not the issue
 }
