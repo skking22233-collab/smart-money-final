@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    { "source": "/:path((?!static/).*)", "destination": "/index.html" }
-  ],
-  "headers": [ ... ]  // headers are fine, not the issue
+    { "source": "/((?!static|api).*)", "destination": "/index.html" }
+  ]
 }
