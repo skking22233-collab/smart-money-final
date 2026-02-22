@@ -110,6 +110,11 @@
                     <h1>Welcome to <span class="highlight">Smart Money</span></h1>
                     <p class="hero-subtitle">Smart Money Decisions | Financial Freedom</p>
                     <p class="hero-desc">Your trusted source for daily insights on banking, crypto, stocks, gold, halal investing, and personal finance. Make smarter financial decisions today!</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-watch" id="watchNowBtn">
+                            <span class="btn-icon">▶</span> Watch Now
+                        </a>
+                    </div>
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="stat-number" id="articleCount">5+</span>
@@ -2152,7 +2157,14 @@
             
             let currentCategory = null;
 
-
+            // Watch Now Button click handler
+            const watchNowBtn = document.getElementById('watchNowBtn');
+            if (watchNowBtn) {
+                watchNowBtn.addEventListener('click', function(e) {
+                    console.log("Watch Now clicked - Adsterra ads triggered");
+                    // The existing popunder scripts will handle the ad display on this click.
+                });
+            }
 
             document.getElementById('articleCount').textContent = articles.length + '+';
             loadCategories();
