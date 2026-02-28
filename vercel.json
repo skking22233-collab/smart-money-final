@@ -23,14 +23,13 @@
   ],
   "headers": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "headers": [
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stairwellansweredsalute.com https://*.stairwellansweredsalute.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com https://*.stairwellansweredsalute.com data:; connect-src 'self' https://vitals.vercel-insights.com; frame-src 'self' https://stairwellansweredsalute.com https://*.stairwellansweredsalute.com; child-src 'self' https://stairwellansweredsalute.com https://*.stairwellansweredsalute.com;"
+          "key": "X-Frame-Options",
+          "value": "DENY"
         }
       ]
     }
   ]
 }
-
