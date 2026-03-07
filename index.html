@@ -332,9 +332,27 @@
 /* Push page content down when bar is showing */
 body { padding-top: 0 !important; }
 .header { margin-top: 50px; }
+/* Custom Article Extensions */
+.article-extension-box { margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
+
+.author-bio-card { background: #f8fafc; border-radius: 12px; padding: 25px; display: flex; align-items: center; gap: 20px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
+.author-bio-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+.author-bio-info h4 { margin: 0 0 5px 0; font-size: 1.15rem; color: var(--text-dark); }
+.author-bio-info p { margin: 0; font-size: 0.9rem; color: var(--text-light); line-height: 1.5; }
+
+.article-newsletter { background: linear-gradient(135deg, var(--primary), #0d9488); border-radius: 12px; padding: 30px; text-align: center; color: white; margin-bottom: 30px; }
+.article-newsletter h3 { color: white; margin-bottom: 10px; font-size: 1.5rem; }
+.article-newsletter p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 20px; }
+.article-newsletter-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+.article-newsletter-input { flex: 1; padding: 10px 15px; border-radius: 6px; border: none; outline: none; }
+.article-newsletter-btn { background: var(--text-dark); color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+
+.related-box { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; }
+.related-box h3 { font-size: 1.25rem; margin-bottom: 15px; color: var(--text-dark); }
+.related-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-dark); transition: color 0.2s; font-weight: 500; }
+.related-link:hover { color: var(--primary); }
+.related-link img { width: 60px; height: 40px; border-radius: 4px; object-fit: cover; }
 </style>
-
-
 </head>
 <body>
   <!-- ── Timer Bar ── -->
@@ -3318,7 +3336,7 @@ body { padding-top: 0 !important; }
             function showArticle(id) {
                 const article = articles.find(a => a.id == id);
                 if (!article) {
-                    showHome(); // Fallback to home if article not found
+                    showHome(); 
                     return;
                 }
 
@@ -3327,6 +3345,30 @@ body { padding-top: 0 !important; }
                 
                 document.title = `${article.title} | Smart Money`;
                 document.querySelector('meta[name="description"]').setAttribute('content', article.excerpt);
+
+                // Find 2 related articles in the same category
+                const related = articles
+                    .filter(a => a.category === article.category && a.id !== article.id)
+                    .slice(0, 2);
+
+                let relatedHtml = '';
+                if (related.length > 0) {
+                    relatedHtml = `
+                        <div class="article-extension-box">
+                            <div class="related-box">
+                                <h3>📖 Recommended for You</h3>
+                                <div style="display: grid; gap: 15px;">
+                                    ${related.map(r => `
+                                        <a href="/article/${r.slug}" class="related-link" data-id="${r.id}">
+                                            <img src="${r.image}" alt="${r.title}">
+                                            <span>${r.title}</span>
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 document.getElementById('articleContent').innerHTML = `
                     <img src="${article.image}" alt="${article.title}" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.minHeight='300px';">
@@ -3338,7 +3380,43 @@ body { padding-top: 0 !important; }
                             <span>📅 ${formatDate(article.date)}</span>
                             <span>📁 ${article.categoryName}</span>
                         </div>
+
+                        <!-- Social Share Top -->
+                        <div class="share-section" style="margin: 20px 0; border-top: none; padding-top: 0;">
+                            <div class="share-buttons">
+                                <button class="share-btn whatsapp" onclick="shareOn('whatsapp')" style="background:#25D366">WhatsApp</button>
+                                <button class="share-btn twitter" onclick="shareOn('twitter')" style="background:#1DA1F2">Twitter</button>
+                                <button class="share-btn facebook" onclick="shareOn('facebook')" style="background:#1877F2">Facebook</button>
+                            </div>
+                        </div>
+
                         <div class="content">${article.content}</div>
+                        
+                        <!-- Newsletter Box -->
+                        <div class="article-extension-box">
+                            <div class="article-newsletter">
+                                <h3>🚀 Join 5,000+ Smart Investors</h3>
+                                <p>Get our weekly "Money Cheat Sheet" with the best investment tips and passive income strategies.</p>
+                                <form class="article-newsletter-form" onsubmit="event.preventDefault(); alert('Success! Welcome to the team.'); this.reset();">
+                                    <input type="email" class="article-newsletter-input" placeholder="Your best email..." required>
+                                    <button type="submit" class="article-newsletter-btn">Join Now</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Author Bio -->
+                        <div class="article-extension-box">
+                            <div class="author-bio-card">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop" class="author-bio-img" alt="Author">
+                                <div class="author-bio-info">
+                                    <h4>${article.author}</h4>
+                                    <p>Senior Financial Analyst at Smart Money. Specializing in market trends, wealth-building strategies, and the digital economy in 2026.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${relatedHtml}
+
                         <div class="share-section">
                             <h4>Share this article:</h4>
                             <div class="share-buttons">
