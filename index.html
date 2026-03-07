@@ -146,192 +146,7 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
     <link rel="stylesheet" href="/style.css">
 
-<style>
-/* ── Gift Popup Overlay ── */
-#giftOverlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.82);
-  backdrop-filter: blur(8px);
-  z-index: 99999;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-#giftOverlay.show { display: flex; }
-
-#giftModal {
-  background: #0f1f14;
-  border: 1px solid rgba(212,168,67,0.3);
-  border-radius: 22px;
-  width: 100%;
-  max-width: 460px;
-  padding: 36px 30px 30px;
-  position: relative;
-  animation: giftPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
-  box-shadow: 0 0 80px rgba(212,168,67,0.12), 0 40px 80px rgba(0,0,0,0.7);
-}
-@keyframes giftPop {
-  from { opacity:0; transform: scale(0.88) translateY(24px); }
-  to   { opacity:1; transform: scale(1) translateY(0); }
-}
-
-/* Gold corner accents */
-#giftModal::before, #giftModal::after {
-  content:'';
-  position:absolute;
-  width:28px; height:28px;
-  border-color: rgba(212,168,67,0.5);
-  border-style: solid;
-}
-#giftModal::before { top:12px; left:12px; border-width:2px 0 0 2px; border-radius:5px 0 0 0; }
-#giftModal::after  { bottom:12px; right:12px; border-width:0 2px 2px 0; border-radius:0 0 5px 0; }
-
-#giftClose {
-  position:absolute; top:12px; right:12px;
-  width:28px; height:28px;
-  background:rgba(255,255,255,0.07);
-  border:none; border-radius:50%;
-  color:#888; font-size:14px; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-}
-#giftClose:hover { background:rgba(255,255,255,0.15); color:#fff; }
-
-.gm-icon {
-  width:56px; height:56px;
-  background:linear-gradient(135deg,rgba(212,168,67,0.2),rgba(212,168,67,0.05));
-  border:1px solid rgba(212,168,67,0.35);
-  border-radius:16px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:26px; margin-bottom:16px;
-  box-shadow:0 6px 20px rgba(212,168,67,0.2);
-}
-.gm-eyebrow {
-  font-size:11px; font-weight:600; letter-spacing:0.14em;
-  text-transform:uppercase; color:#d4a843; margin-bottom:8px;
-  font-family:'Poppins',sans-serif;
-}
-.gm-title {
-  font-size:1.5rem; font-weight:700; color:#f0ede8;
-  line-height:1.2; margin-bottom:6px;
-  font-family:'Poppins',sans-serif;
-}
-.gm-amount {
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(212,168,67,0.1); border:1px solid rgba(212,168,67,0.3);
-  border-radius:100px; padding:5px 14px; margin-bottom:12px;
-  font-weight:700; color:#f5cc6a; font-size:1.1rem;
-  font-family:'Poppins',sans-serif;
-}
-.gm-sub { font-size:13px; color:#7a8f7d; line-height:1.55; margin-bottom:22px; font-family:'Poppins',sans-serif; }
-
-.gm-group { margin-bottom:12px; }
-.gm-label {
-  display:block; font-size:11px; font-weight:600;
-  color:#7a8f7d; letter-spacing:0.07em; text-transform:uppercase;
-  margin-bottom:5px; font-family:'Poppins',sans-serif;
-}
-.gm-input, .gm-select {
-  width:100%;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px; padding:11px 14px;
-  color:#f0ede8; font-family:'Poppins',sans-serif; font-size:14px;
-  outline:none; transition:border-color 0.2s, box-shadow 0.2s;
-  box-sizing:border-box;
-}
-.gm-input:focus, .gm-select:focus {
-  border-color:#d4a843;
-  box-shadow:0 0 0 3px rgba(212,168,67,0.1);
-}
-.gm-select option { background:#0f1f14; }
-
-.gm-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-
-.gm-btn {
-  width:100%; background:linear-gradient(135deg,#d4a843,#b8902a,#f5cc6a);
-  background-size:200%; color:#0a0c09;
-  border:none; padding:14px; border-radius:11px;
-  font-family:'Poppins',sans-serif; font-size:1rem; font-weight:700;
-  cursor:pointer; margin-top:4px; letter-spacing:0.03em;
-  box-shadow:0 6px 24px rgba(212,168,67,0.3);
-  transition:transform 0.15s, box-shadow 0.15s;
-  position:relative; overflow:hidden;
-}
-.gm-btn::after {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.25) 50%,transparent 60%);
-  transform:translateX(-100%);
-  animation:gmShimmer 2.5s ease infinite;
-}
-@keyframes gmShimmer { to { transform:translateX(200%); } }
-.gm-btn:hover { transform:translateY(-1px); box-shadow:0 10px 32px rgba(212,168,67,0.5); }
-.gm-btn:disabled { opacity:0.55; cursor:not-allowed; transform:none; }
-.gm-privacy { text-align:center; font-size:11px; color:#7a8f7d; margin-top:10px; font-family:'Poppins',sans-serif; }
-
-/* Success state */
-.gm-success { display:none; text-align:center; padding:10px 0; }
-.gm-success.show { display:block; }
-.gm-form-wrap.hide { display:none; }
-.gm-success-icon { font-size:3rem; animation:giftPop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
-.gm-success h3 { font-family:'Poppins',sans-serif; font-size:1.4rem; font-weight:700; color:#f0ede8; margin:12px 0 8px; }
-.gm-success p { font-size:13px; color:#7a8f7d; line-height:1.6; font-family:'Poppins',sans-serif; }
-.gm-visit-btn {
-  display:inline-block; margin-top:16px;
-  background:linear-gradient(135deg,#1a8a4a,#166638);
-  color:#fff; padding:11px 24px; border-radius:100px;
-  text-decoration:none; font-family:'Poppins',sans-serif;
-  font-weight:600; font-size:13px;
-  box-shadow:0 6px 20px rgba(26,138,74,0.3);
-  transition:transform 0.15s;
-}
-.gm-visit-btn:hover { transform:translateY(-1px); }
-
-/* ── Timer Bar (top of page) ── */
-#giftTimerBar {
-  position:fixed; top:0; left:0; right:0; z-index:99998;
-  background:linear-gradient(90deg,#0f1f14,#0a1a0e 40%,#0f1f14);
-  border-bottom:1px solid rgba(212,168,67,0.18);
-  padding:10px 20px;
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; flex-wrap:wrap;
-}
-.gtb-left { display:flex; align-items:center; gap:10px; flex:1; }
-.gtb-icon { font-size:20px; }
-.gtb-text { font-family:'Poppins',sans-serif; font-size:13px; color:#c8c0b0; }
-.gtb-text strong { color:#f5cc6a; }
-.gtb-timer {
-  display:flex; align-items:center; gap:8px;
-  font-family:'Poppins',sans-serif; font-size:13px; color:#7a8f7d;
-}
-.gtb-countdown {
-  background:rgba(212,168,67,0.15); border:1px solid rgba(212,168,67,0.3);
-  border-radius:6px; padding:3px 10px;
-  font-weight:700; color:#f5cc6a; font-size:15px; min-width:28px;
-  text-align:center; transition:color 0.3s;
-}
-.gtb-countdown.urgent { color:#ff6b2b; border-color:rgba(255,107,43,0.4); background:rgba(255,107,43,0.1); }
-
-/* Claim button in bar */
-#gtbClaimBtn {
-  background:linear-gradient(135deg,#d4a843,#b8902a);
-  color:#0a0c09; border:none; padding:8px 18px;
-  border-radius:100px; font-family:'Poppins',sans-serif;
-  font-weight:700; font-size:13px; cursor:pointer;
-  white-space:nowrap; animation:gtbPulse 2.5s ease-in-out infinite;
-  display:none;
-}
-@keyframes gtbPulse {
-  0%,100%{box-shadow:0 0 12px rgba(212,168,67,0.3)}
-  50%{box-shadow:0 0 24px rgba(212,168,67,0.6)}
-}
-#gtbClaimBtn:hover { animation:none; transform:scale(1.04); }
-
-/* Push page content down when bar is showing */
-body { padding-top: 0 !important; }
-.header { margin-top: 50px; }
+    <style>
 /* Custom Article Extensions */
 .article-extension-box { margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
 
@@ -355,78 +170,6 @@ body { padding-top: 0 !important; }
 </style>
 </head>
 <body>
-  <!-- ── Timer Bar ── -->
-  <div id="giftTimerBar">
-    <div class="gtb-left">
-      <span class="gtb-icon">🎁</span>
-      <div class="gtb-text">
-        Join our <strong>InvestMoney Gift Event</strong>! Ends in:
-      </div>
-      <div class="gtb-timer">
-        <div id="gtbMin" class="gtb-countdown">00</div> :
-        <div id="gtbSec" class="gtb-countdown">00</div>
-      </div>
-    </div>
-    <button id="gtbClaimBtn" onclick="openGiftModal()">Claim Gift Now</button>
-  </div>
-
-  <!-- ── Gift Popup Overlay ── -->
-  <div id="giftOverlay">
-    <div id="giftModal">
-      <button id="giftClose" onclick="closeGiftModal()">✕</button>
-      
-      <div id="gmFormWrap" class="gm-form-wrap">
-        <div class="gm-icon">💸</div>
-        <div class="gm-eyebrow">Payment Setup</div>
-        <h2 class="gm-title">Enter Payment Details</h2>
-        <div class="gm-amount">Receive Your Rewards</div>
-        <p class="gm-sub">Please provide your correct wallet details to receive your investment rewards directly.</p>
-
-        <form onsubmit="handleGiftSubmit(event)">
-          <div class="gm-group">
-            <label class="gm-label">Full Name (As per ID Card)</label>
-            <input type="text" id="gmFullName" class="gm-input" placeholder="Arif Khan" required>
-          </div>
-
-          <div class="gm-group">
-            <label class="gm-label">Select Wallet</label>
-            <select id="gmWallet" class="gm-select" required>
-              <option value="">Select your wallet</option>
-              <option value="JazzCash">JazzCash</option>
-              <option value="EasyPaisa">EasyPaisa</option>
-              <option value="UPaisa">UPaisa</option>
-              <option value="SadaPay">SadaPay</option>
-              <option value="NayaPay">NayaPay</option>
-            </select>
-          </div>
-
-          <div class="gm-group">
-            <label class="gm-label">Wallet Number</label>
-            <input type="tel" id="gmWalletNumber" class="gm-input" placeholder="03XXXXXXXXX" pattern="03[0-9]{9}" title="Please enter a valid 11-digit Pakistani number starting with 03" required>
-          </div>
-
-          <!-- Honeypot field (hidden from users, bots will fill it) -->
-          <div style="display:none;">
-            <input type="text" id="gmHoneypot" tabindex="-1" autocomplete="off">
-          </div>
-
-          <button type="submit" id="gmSubmitBtn" class="gm-btn">Submit Payment Details</button>
-
-          <p class="gm-privacy">🔒 Your payment data is secure.</p>
-        </form>
-      </div>
-
-
-      <!-- Success State -->
-      <div id="gmSuccess" class="gm-success">
-        <div class="gm-success-icon">🎉</div>
-        <h3>Application Received!</h3>
-        <p>Thank you! Our lead analyst will review your details and contact you via WhatsApp within 24 hours.</p>
-        <a href="#" class="gm-visit-btn" onclick="closeGiftModal()">Continue Reading</a>
-      </div>
-    </div>
-  </div>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -491,7 +234,7 @@ body { padding-top: 0 !important; }
 
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="stat-number" id="articleCount">5+</span>
+                            <span class="stat-number" id="articleCount">8+</span>
                             <span class="stat-label">Articles</span>
                         </div>
                         <div class="stat">
@@ -824,6 +567,76 @@ body { padding-top: 0 !important; }
     <script>
         const articles = [
             {
+                id: 36,
+                slug: "iran-war-2026-gold-prices-crossing-5000",
+                title: "Iran War 2026: Why Gold Prices Crossed $5,000 – What Investors Should Do Now",
+                category: "gold",
+                categoryName: "Gold & Silver",
+                excerpt: "Gold prices have shattered records, crossing $5,000 per ounce amidst the 2026 Iran conflict. Learn why this happened and how to protect your portfolio.",
+                content: `
+                    <div class="quick-summary" style="background: #fffbeb; border-left: 5px solid #d97706; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #d97706;">🎯 Market Alert</h4>
+                        <p style="margin-bottom: 0;">Gold has officially crossed the historic <strong>$5,000 per ounce</strong> mark as of March 2026. The primary drivers are the escalating US-Iran conflict and global inflation hedges.</p>
+                    </div>
+                    <p>Remember back in early 2025 when gold kept pushing up slowly, and everyone was saying it looked overbought around $3,000. Now it's March 8, 2026, and spot prices are sitting above $5,100.</p>
+                    <h2>Geopolitical Tensions and the $6,000 Prediction</h2>
+                    <p>Geopolitical stuff really kicked in with missiles going back and forth, and safe-haven money flowed in fast. Analysts from J.P. Morgan are talking about $6,300 by the end of 2026.</p>
+                    <p>For people with cash thinking about getting in, it might make sense to dollar-cost average instead of going all at once. Gold does well in a mess like this, but you should mix it with other things like bonds or dividend stocks.</p>
+                `,
+                author: "Smart Money Team",
+                date: "2026-03-08",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
+                featured: true,
+                tags: ["why gold price reached $5000 in 2026", "iran war impact on gold prices 2026", "why investors buy gold during war", "is gold a good investment during war", "gold price prediction after iran war 2026"]
+                },
+                {
+                id: 35,
+                slug: "us-iran-war-impact-bitcoin-crash-2026",
+                title: "US-Iran War Impact: Why Bitcoin Is Crashing – When Will Crypto Recover in 2026?",
+                category: "crypto",
+                categoryName: "Crypto Updates",
+                excerpt: "Bitcoin and the crypto market are facing high volatility due to the 2026 Middle East conflict. Discover why Bitcoin is crashing and when a recovery is expected.",
+                content: `
+                    <div class="quick-summary" style="background: #f0f9ff; border-left: 5px solid #0ea5e9; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #0ea5e9;">📊 Market Insights</h4>
+                        <p style="margin-bottom: 0;">Bitcoin saw a sharp drop to $60,900 following confirmed strikes, but has shown resilience, currently trading around $67,800.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800&auto=format&fit=crop" alt="Crypto market volatility" style="width:100%; border-radius:8px; margin-bottom:20px;">
+                    <p>Bitcoin was sitting around $66,000 to $68,000 back in late February. Then headlines came out about strikes in the Strait of Hormuz. Within a few hours, BTC dropped to the low 63,000s.</p>
+                    <h2>Why is the Crypto Market Down During War?</h2>
+                    <p>Crypto used to just follow stocks in messes like this—sell everything risky. But with Iran, it feels different. Buyers came in quick, hoping the Fed might ease policy to fund war efforts.</p>
+                    <p>For recovery in 2026, a real push needs clarity. If de-escalation happens, we might test $75,000 to $80,000 soon. Don't chase highs or sell lows.</p>
+                `,
+                author: "Smart Money Team",
+                date: "2026-03-08",
+                image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop",
+                featured: true,
+                tags: ["why bitcoin is crashing during iran war 2026", "us iran war impact on bitcoin price", "will bitcoin recover after iran war", "is bitcoin a safe haven during war", "when will crypto market recover 2026"]
+                },
+                {
+                id: 34,
+                slug: "middle-east-war-2026-stock-market-impact",
+                title: "Middle East War 2026: How the Stock Market Is Affected – How to Protect Your Investments",
+                category: "stocks",
+                categoryName: "Stock Market",
+                excerpt: "Analyzing the impact of the 2026 Middle East conflict on the S&P 500 and global stock markets. Learn how to protect your portfolio during geopolitical instability.",
+                content: `
+                    <div class="quick-summary" style="background: #fdf2f8; border-left: 5px solid #db2777; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #db2777;">📉 Portfolio Strategy</h4>
+                        <p style="margin-bottom: 0;">The S&P 500 has experienced a 1.3% dip as geopolitical tensions rise. History suggests a 5-7% initial sell-off followed by recovery.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop" alt="Stock market volatility" style="width:100%; border-radius:8px; margin-bottom:20px;">
+                    <p>The S&P 500 was hanging around 7000 in early March. Then strikes from the US and Israel into Iran shook the market. By Monday, the market was bumping.</p>
+                    <h2>How to Protect Your Investments</h2>
+                    <p>Don't sell everything. History shows markets recover after shocks. Check your balance—if you have too much in cyclicals, maybe trim some and go to utilities or staples.</p>
+                    <p>This Iran thing is shaking stocks and pushing oil up short-term, but pros say the uptrend might hold. Stick to your long-term plan.</p>
+                `,
+                author: "Smart Money Team",
+                date: "2026-03-08",
+                image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
+                featured: true,
+                tags: ["how middle east war affects stock market 2026", "us stock market impact of iran war", "why stock market drops during war", "how to protect investments during war", "best stocks to buy during geopolitical crisis"]
+                },            {
                 id: 33,
                 slug: "how-to-invest-1000-in-usa-2026",
                 title: "How to Invest $1,000 in USA in 2026 (Beginner Guide)",
@@ -3648,161 +3461,6 @@ body { padding-top: 0 !important; }
             if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=400');
         }
     </script>
-
- <section id="added-stock-market-articles" style="display: none;">
-  <article>
-    <h1>Stock Market for Beginners: How to Start Investing in 2025</h1>
-    <p><strong>Category:</strong> Stock Market</p>
-    
-<p><em>Yeh article sirf maloomat ke liye hai. Hum aap ke kisi bhi nuksaan ke zimmedar nahi hain. Investment se pehle apni research zaroor karein.</em></p>
-<p><em>This article is for informational purposes only. We are not responsible for any losses you may incur. Please do your own research before investing.</em></p>
-
-    <div>
-      <p>The stock market has made more millionaires than any other investment in history...</p>
-    </div>
-  </article>
-
-  <article>
-    <h1>How to Analyze a Stock Before Buying: Complete Guide (2025)</h1>
-    <p><strong>Category:</strong> Stock Market</p>
-    
-<p><em>Yeh article sirf maloomat ke liye hai. Hum aap ke kisi bhi nuksaan ke zimmedar nahi hain. Investment se pehle apni research zaroor karein.</em></p>
-<p><em>This article is for informational purposes only. We are not responsible for any losses you may incur. Please do your own research before investing.</em></p>
-
-    <div>
-      <p>Buying stocks without analysis is like buying a house without inspecting it...</p>
-    </div>
-  </article>
-</section>
-
-
-  <!-- ── Gift Popup Logic ── -->
-<script>
-(function() {
-  // CONFIG: REPLACE WITH YOUR GOOGLE APPS SCRIPT URL
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzYVqM6FXguEo-0OUxpidL3qEI5XX7BeHWrfxO39X_C7GaYa-Irx9zeU4c2TVYV9JpT5g/exec';
-
-  var timerDuration = 30; // 30 seconds
-  var storageKey = 'gm_timer_end_v2';
-
-  window.addEventListener('DOMContentLoaded', function() {
-    initTimer();
-  });
-
-  function initTimer() {
-    var endTime = localStorage.getItem(storageKey);
-    var now = Math.floor(Date.now() / 1000);
-
-    if (!endTime || now > parseInt(endTime)) {
-      endTime = now + timerDuration;
-      localStorage.setItem(storageKey, endTime);
-    }
-
-    updateTimerDisplay(endTime);
-    var intv = setInterval(function() {
-      var currentNow = Math.floor(Date.now() / 1000);
-      var diff = endTime - currentNow;
-      if (diff <= 0) {
-        clearInterval(intv);
-        document.getElementById('gtbMin').textContent = '00';
-        document.getElementById('gtbSec').textContent = '00';
-        document.getElementById('gtbClaimBtn').style.display = 'block';
-        return;
-      }
-      updateTimerDisplay(endTime);
-    }, 1000);
-  }
-
-  function updateTimerDisplay(endTime) {
-    var diff = endTime - Math.floor(Date.now() / 1000);
-    if (diff < 0) diff = 0;
-    var m = Math.floor(diff / 60);
-    var s = diff % 60;
-    document.getElementById('gtbMin').textContent = (m < 10 ? '0' : '') + m;
-    document.getElementById('gtbSec').textContent = (s < 10 ? '0' : '') + s;
-
-    if (diff < 60) {
-      document.getElementById('gtbMin').classList.add('urgent');
-      document.getElementById('gtbSec').classList.add('urgent');
-    }
-  }
-
-  // ── Global Handlers ──
-  window.openGiftModal = function() {
-    document.getElementById('giftOverlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
-  };
-  window.closeGiftModal = function() {
-    document.getElementById('giftOverlay').classList.remove('show');
-    document.body.style.overflow = '';
-  };
-
-  window.handleGiftSubmit = async function(e) {
-    e.preventDefault();
-    
-    // Honeypot check
-    if (document.getElementById('gmHoneypot').value !== "") {
-      console.warn("Bot detected.");
-      return; 
-    }
-
-    var fullName = document.getElementById('gmFullName').value;
-    var wallet   = document.getElementById('gmWallet').value;
-    var number   = document.getElementById('gmWalletNumber').value.replace(/\s/g, ''); // Remove spaces
-
-    // Strict Pakistani Phone Validation
-    var phoneRegex = /^03[0-9]{9}$/;
-    if(!phoneRegex.test(number)) { 
-      alert('Please enter a valid 11-digit number starting with 03 (e.g., 03001234567).'); 
-      return; 
-    }
-
-    var btn = document.getElementById('gmSubmitBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Processing...';
-    
-    try {
-      await sendToSheet({
-        type: 'payment_setup',
-        name: fullName,
-        wallet: wallet,
-        wallet_number: number,
-        referrer: document.referrer || 'direct',
-        page: window.location.href,
-        ts: new Date().toISOString(),
-        hp: "" // Sending empty honeypot to verify on server
-      });
-
-      document.getElementById('gmFormWrap').classList.add('hide');
-      document.getElementById('gmSuccess').classList.add('show');
-    } catch (err) {
-      alert("Something went wrong. Please try again.");
-      btn.disabled = false;
-      btn.textContent = 'Submit Payment Details';
-    }
-  };
-
-
-
-  // ── Send to Google Sheets ──
-  async function sendToSheet(data) {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-      console.log('[InvestMoney Gift] Demo mode — data:', data);
-      return;
-    }
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(data)
-      });
-    } catch(err) {
-      console.warn('Sheet send failed:', err);
-    }
-  }
-})();
-</script>
-
 
 </body>
 </html>
