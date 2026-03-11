@@ -140,7 +140,7 @@ const articles = [
         id: 36,
         slug: "iran-war-2026-gold-prices-crossing-5000",
         title: "Gold Price Forecast 2026: Why Gold Crossed $5,000 - Investment Analysis",
-        category: "investing", categoryName: "Investing",
+        category: "gold", categoryName: "Gold & Silver",
         categoryName: "Gold & Silver",
         excerpt: "Analysis of gold price surge in 2026, market factors, and investment strategies for precious metals.",
         content: `
@@ -216,7 +216,7 @@ const articles = [
         id: 34,
         slug: "middle-east-war-2026-stock-market-impact",
         title: "Stock Market & Geopolitical Risk 2026: Portfolio Protection Guide",
-        category: "investing", categoryName: "Investing",
+        category: "stocks", categoryName: "Stock Market",
         categoryName: "Stock Market",
         excerpt: "Understanding stock market volatility during geopolitical events and strategies to protect your investment portfolio.",
         content: `
@@ -258,7 +258,7 @@ const articles = [
         slug: "how-to-invest-1000-in-usa-2026",
         title: "How to Invest $1,000 in USA in 2026 (Beginner Guide)",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Got $1,000 and want to grow it in 2026? Discover the best way to invest $1,000 right now in the US, from Roth IRAs to broad market index funds.",
         content: `
             <div class="quick-summary" style="background: #f8fafc; border-left: 5px solid #059669; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
@@ -285,7 +285,7 @@ const articles = [
         `,
         author: "InvestMoney Team",
         date: "2026-03-07",
-        image: "https://images.unsplash.com/photo-1579621970795-87fca3f55051?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop", // Replaced broken photo-1579621970795
         featured: true,
         tags: ["invest 1000", "USA finance", "Roth IRA", "index funds", "passive income"]
     },
@@ -294,7 +294,7 @@ const articles = [
         slug: "how-to-start-investing-at-18-in-usa",
         title: "How to Start Investing at 18 in USA (2026 Cheat Code)",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Turning 18 is your biggest financial superpower. Learn how to start investing at 18 in USA, the best investment apps, and how to build a portfolio with $100.",
         content: `
             <div class="quick-summary" style="background: #f8fafc; border-left: 5px solid #059669; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
@@ -322,7 +322,7 @@ const articles = [
         `,
         author: "InvestMoney Team",
         date: "2026-03-07",
-        image: "https://images.unsplash.com/photo-1591115765373-520b7a3d7266?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop", // Replaced broken photo-1591115765373
         featured: false,
         tags: ["investing at 18", "USA finance", "young investors", "Roth IRA", "wealth building"]
     },
@@ -331,7 +331,7 @@ const articles = [
         slug: "how-to-improve-credit-score-by-100-points-fast-2026",
         title: "How to Improve Credit Score by 100 Points Fast (+100 Points in 2026)",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Want a 100-point credit score boost? Discover the 2026 secret loophole to raise your score fast through utilization, authorized users, and nuking collections.",
         content: `
             <div class="quick-summary" style="background: #f8fafc; border-left: 5px solid #059669; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
@@ -374,7 +374,7 @@ const articles = [
         slug: "debt-snowball-vs-debt-avalanche-usa-guide-2026",
         title: "Debt Snowball vs Debt Avalanche: The 2026 Winner Revealed",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Struggling with debt? We reveal the 2026 winner between Debt Snowball and Debt Avalanche. Save thousands in interest and get debt-free 2x faster.",
         content: `
             <div class="quick-summary" style="background: #f8fafc; border-left: 5px solid #059669; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
@@ -410,7 +410,7 @@ const articles = [
         slug: "how-to-fix-bad-credit-fast-in-usa",
         title: "How to Fix Bad Credit Fast in USA",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Looking to improve your credit score quickly in 2026? Learn the fastest ways to fix bad credit in the USA, from disputing errors to crushing utilization.",
         content: `
             <p>Okay, let's get real for a second. You're staring at a credit score that's probably in the 500s or lower, maybe collections popping up like unwanted notifications, late payments from a rough patch a few years back, maxed-out cards from when life hit hard. I get it—I've talked to people (and yeah, I've been closer to that zone than I'd like to admit) who feel like their credit is a crime scene and they're the prime suspect. The dream of "fix it fast" is tempting, but here's the straight talk in 2026: there's no magic delete button, no shady service that'll zap negatives overnight without risking your wallet or breaking laws. But you <em>can</em> see meaningful jumps in 3–6 months, sometimes even 30–90 days on certain factors, if you hit the high-impact levers first.</p>
@@ -456,7 +456,7 @@ const articles = [
         slug: "how-to-build-credit-from-0-in-usa",
         title: "How to Build Credit From 0 in USA",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Starting from zero? Learn how to build credit from 0 in the USA with our step-by-step 2026 guide for recent graduates, immigrants, and young adults.",
         content: `
             <p>Okay, picture this: You're 24, just moved to a new city for your first real job after college (or maybe you're an immigrant who's been here a couple years grinding side hustles), and you realize you need to rent an apartment, maybe finance a cheap car, or just not get laughed out of every loan application. But your credit report? It's basically a blank page. Zero history. I've been there—starting from scratch feels like showing up to a party where everyone already knows the inside jokes.</p>
@@ -499,7 +499,7 @@ const articles = [
         `,
         author: "InvestMoney Team",
         date: "2026-03-04",
-        image: "https://images.unsplash.com/photo-1556642044-3c52d6e88c62?w=800&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1554224155-16974a424155?q=80&w=1200&auto=format&fit=crop", // Replaced broken photo-1556642044
         featured: true,
         tags: ["build credit", "credit card", "credit report", "authorized user", "credit-builder loan", "USA finance"]
     },
@@ -507,8 +507,8 @@ const articles = [
         id: 23,
         slug: "how-to-stop-living-paycheck-to-paycheck-in-usa-2026",
         title: "How to Stop Living Paycheck to Paycheck in USA",
-        category: "usa-finance",
-        categoryName: "USA-Finance",
+        category: "finance",
+        categoryName: "Personal Finance",
         excerpt: "Stop the paycheck-to-paycheck cycle in 2026 with our practical playbook. Learn how real people like Jake built buffers and gained financial freedom.",
         content: `
             <p>Okay, let's cut through the noise—it's March 3, 2026, and if you're still riding the paycheck-to-paycheck rollercoaster in the USA, you're in good (or at least very crowded) company. Fresh data from Bank of America shows about 24% of households were stuck in this spot through much of 2025, with the growth slowing but lower-income folks (hitting 29%) feeling it hardest. Other surveys paint an even grimmer picture: CivicScience says 76% of Americans have little to no safety net, Ramsey Solutions pegs over half living paycheck to paycheck, and places like PYMNTS note roughly two-thirds feel that fragile \"one shock away\" vibe. The median emergency savings? Often cited around $500–$5,000 depending on the source (Empower at $500 overall, U.S. News median $5,000 for those who have one, Bankrate showing only 46% can cover three months' expenses). It's not just low earners anymore—plenty of middle-class families with decent jobs still watch every dollar evaporate before the next deposit.</p>
@@ -558,8 +558,8 @@ const articles = [
         id: 24,
         slug: "how-to-build-an-emergency-fund-in-america-2026",
         title: "How to Build an Emergency Fund in America",
-        category: "usa-finance",
-        categoryName: "USA-Finance",
+        category: "finance",
+        categoryName: "Personal Finance",
         excerpt: "Building an emergency fund in America doesn't have to be overwhelming. Follow our 2026 step-by-step guide to secure your financial future today.",
         content: `
             <p>Okay, let's talk straight about building an emergency fund in America right now—March 2026—because if the latest numbers are any indication, way too many of us are one bad break away from real trouble. Bankrate's fresh 2026 Emergency Savings Report (polled late 2025) drops some tough truths: only 46% of Americans have enough tucked away to cover three months of expenses, nearly 1 in 4 (24%) have zero emergency savings at all, and the median balance for those who do have one has shrunk to around $5,000—half of what it was the year before. Empower's research puts the overall median even lower at $500, with about 1 in 3 folks having nothing set aside. U.S. News surveys show 43% couldn't handle a $1,000 surprise from savings alone. It's not laziness; it's the math of rising costs, stagnant wages for many, and life throwing curveballs like medical bills, car repairs, or sudden job changes.</p>
@@ -604,7 +604,7 @@ const articles = [
         id: 1,
         slug: "best-digital-wallets-globally-in-2026-a-worldwide-comparison",
         title: "2026 Global Digital Wallet Comparison: Security, Fees, and Accessibility",
-        category: "finance", categoryName: "Personal Finance",
+        category: "banking", categoryName: "Banking & Wallets",
         categoryName: "Banking & Wallets",
         excerpt: "In 2026, digital wallets process trillions globally, driven by mobile-first Asia, contactless West, and inclusion in emerging markets. Compare Apple Pay, Google Wallet, JazzCash, EasyPaisa and more.",
         content: `
@@ -646,7 +646,7 @@ const articles = [
         id: 2,
         slug: "is-cryptocurrency-halal-or-haram-complete-islamic-guide-2026",
         title: "The Shariah Perspective on Cryptocurrency: A 2026 Comprehensive Analysis",
-        category: "investing", categoryName: "Investing",
+        category: "crypto", categoryName: "Crypto Updates",
         categoryName: "Halal Investing",
         excerpt: "Islamic scholars divide on cryptocurrency. Learn about Bitcoin, Ethereum from Shariah perspective - what's halal, what's haram, and how to invest according to Islamic principles.",
         content: `
@@ -734,7 +734,7 @@ const articles = [
         id: 3,
         slug: "market-volatility-gold-and-silver-price-swings-explained-2026",
         title: "Precious Metals Analysis: Evaluating Gold and Silver Volatility in 2026",
-        category: "investing", categoryName: "Investing",
+        category: "gold", categoryName: "Gold & Silver",
         categoryName: "Gold & Silver",
         excerpt: "Gold crossed $5,000/oz then fell to $4,800. Silver dropped 17-36% in one day. Understand what's driving precious metals volatility and investment outlook for 2026.",
         content: `
@@ -869,7 +869,7 @@ const articles = [
         id: 5,
         slug: "complete-psx-investment-guide-pakistan-stock-exchange-for-beginners-2026",
         title: "The 2026 PSX Investment Framework: Navigating the Pakistan Stock Exchange",
-        category: "investing", categoryName: "Investing",
+        category: "stocks", categoryName: "Stock Market",
         categoryName: "Stock Market",
         excerpt: "KSE-100 rose 60% last year. Learn how to invest in Pakistan Stock Exchange - from opening account to picking blue-chip stocks like HBL, PPL, Lucky Cement.",
         content: `
@@ -1520,7 +1520,7 @@ const articles = [
         id: 8,
         slug: "stock-market-for-beginners-how-to-start-investing-in-2025",
         title: "Stock Market for Beginners: How to Start Investing in 2025",
-        category: "investing", categoryName: "Investing",
+        category: "stocks", categoryName: "Stock Market",
         categoryName: "Stock Market",
         excerpt: "Learn how the stock market works and how to start investing as a beginner in 2025. A complete step-by-step guide to buying your first stock and building wealth.",
         content: `
@@ -1645,7 +1645,7 @@ const articles = [
         id: 9,
         slug: "how-to-analyze-a-stock-before-buying-complete-guide-2025",
         title: "How to Analyze a Stock Before Buying: Complete Guide (2025)",
-        category: "investing", categoryName: "Investing",
+        category: "stocks", categoryName: "Stock Market",
         categoryName: "Stock Market",
         excerpt: "Learn how to analyze a stock before buying it. This beginner-friendly guide covers fundamental analysis, technical analysis, key ratios, and red flags to watch.",
         content: `
@@ -2090,7 +2090,7 @@ const articles = [
         id: 12,
         slug: "what-are-mutual-funds-a-beginners-complete-guide-2025",
         title: "What Are Mutual Funds? A Beginner's Complete Guide (2025)",
-        category: "investing", categoryName: "Investing",
+        category: "mutual", categoryName: "Mutual Funds",
         categoryName: "Mutual Funds",
         excerpt: "Understand what mutual funds are, how they work, types, benefits, and how to invest. A simple beginner's guide to mutual fund investing in 2025.",
         content: `
@@ -2230,7 +2230,7 @@ const articles = [
         id: 13,
         slug: "mutual-funds-vs-etfs-which-one-should-you-invest-in-2025",
         title: "Mutual Funds vs ETFs: Which One Should You Invest In? (2025)",
-        category: "investing", categoryName: "Investing",
+        category: "mutual", categoryName: "Mutual Funds",
         categoryName: "Mutual Funds",
         excerpt: "Mutual funds vs ETFs — what's the difference and which is better for you? Compare fees, flexibility, tax efficiency, and performance in this complete guide.",
         content: `
@@ -2381,7 +2381,7 @@ const articles = [
         slug: "how-to-use-ai-tools-for-personal-finance-2026-usa-guide-for-beginners",
         title: "How to Use AI Tools for Personal Finance in 2026 – USA Guide for Beginners",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Master your money in 2026! Our USA guide shows beginners how to use AI tools for budgeting, tracking expenses, and boosting credit scores. Start your journey today.",
         content: `
             <h1>How to Use AI Tools for Personal Finance in 2026 – USA Guide for Beginners</h1>
@@ -2444,8 +2444,8 @@ const articles = [
         id: 17,
         slug: "best-side-hustles-usa-2026-earn-extra-1000-per-month",
         title: "Best Side Hustles in the USA 2026 – Earn Extra $1,000+ Per Month Fast",
-        category: "usa-finance",
-        categoryName: "USA-Finance",
+        category: "earning",
+        categoryName: "Online Earning",
         excerpt: "Boost your income in 2026! Explore the best side hustles in the USA to earn an extra $1,000+ per month. Realistic gigs for beginners to fight inflation now.",
         content: `
             <p>Side hustles in 2026 feel like something everyone has to think about now, not just an extra thing for fun. With costs staying high even if inflation is calming down a bit, so many people are turning to these gigs. Surveys from places like Bankrate and LendingTree say about 27 to 40 percent of adults in the US have some kind of side work going on. And the average from that is around 885 to 1200 dollars a month. The whole gig economy is huge, over 674 billion globally, and AI is making it even easier to jump in.</p>
@@ -2468,7 +2468,7 @@ const articles = [
         slug: "mortgage-strategy-2026-save-thousands-on-home-loan",
         title: "USA Mortgage Strategy 2026: Save Thousands on Your Home Loan Fast",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Buying a home in 2026? Use our expert USA mortgage strategy to save thousands on interest, negotiate like a pro, and navigate the housing market with ease.",
         content: `
             <p>When it comes to buying a home, your mortgage strategy is more than just about finding the right house. It's about getting your finances in order, understanding the different loan types available, and negotiating intelligently. Even small changes to your strategy can lead to lower monthly payments and tens of thousands of dollars saved over time.</p>
@@ -2504,7 +2504,7 @@ const articles = [
         slug: "how-to-create-monthly-budget-usa-beginner-guide-2026",
         title: "Master Your Money: How to Create a Monthly Budget in the USA (2026 Guide)",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Learn how to create a realistic monthly budget in the USA for 2026. From the 50/30/20 rule to top budgeting apps, manage your money like a pro today!",
         content: `
             <p>Budgeting feels like a big deal right now, especially with all the talk about how money is getting a bit easier to handle but costs still hit hard. In 2026, inflation is supposed to stay around 2.4 percent, which is not too bad compared to before, but things like rent and groceries keep eating up a lot of what people earn. For Americans, putting together a monthly budget can really help sort out the mess, cut down on worry, and maybe even start saving for something bigger down the line.</p>
@@ -2539,7 +2539,7 @@ const articles = [
         slug: "50-30-20-rule-explained-americans-2026",
         title: "Master the 50/30/20 Rule: Best Budgeting Strategy for Americans in 2026",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Unlock financial freedom in 2026 with the 50/30/20 rule. Learn how to split your USA income between needs, wants, and savings with our simple expert guide.",
         content: `
             <p>The 50/30/20 rule—it's one of those personal finance ideas that sounds almost too straightforward to be real. Split your take-home pay: 50% on the stuff you can't skip (needs like rent, groceries, bills), 30% on the fun things that make life worth living (wants like coffee runs, concerts), and 20% straight to building your future (savings, extra debt payments, retirement).</p>
@@ -2583,7 +2583,7 @@ const articles = [
         slug: "best-budgeting-apps-usa-beginners-2026",
         title: "Best Budgeting Apps in USA for Beginners 2026",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Looking for the best free budgeting apps in the USA? Our 2026 guide compares top AI-powered tools like Cleo, Monarch, and Rocket Money for total beginners.",
         content: `
             <h1>Best Budgeting Apps in USA for Beginners 2026</h1>
@@ -2622,7 +2622,7 @@ const articles = [
         slug: "how-to-save-5000-one-year-usa-2026",
         title: "How to Save $5,000 in One Year in the USA (2026 Guide)",
         category: "usa-finance",
-        categoryName: "USA-Finance",
+        categoryName: "USA Finance",
         excerpt: "Want to learn how to save $5000 in a year USA? Our simple guide provides an easy savings plan to reach $5000 with zero stress in 2026.",
         content: `
             <h1>How to Save $5,000 in One Year in the USA</h1>
