@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google AdSense - Required for Approval -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614"
-    crossorigin="anonymous"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://investmoney.online/logo.png">
+    
+    <!-- Google AdSense - Lazy Loaded for Speed -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614";
+                script.crossOrigin = "anonymous";
+                document.head.appendChild(script);
+            }, 3000); // 3 second delay
+        });
+    </script>
     <meta name="google-adsense-account" content="ca-pub-1589718392871614">
     
     <!-- Basic Meta Tags -->
@@ -168,11 +180,15 @@
                             Categories <span class="arrow">▼</span>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="/category/finance" class="dropdown-item" data-category="finance">💰 Personal Finance</a>
-                            <a href="/category/investing" class="dropdown-item" data-category="investing">📈 Investing</a>
-                            <a href="/category/crypto" class="dropdown-item" data-category="crypto">₿ Cryptocurrency</a>
-                            <a href="/category/usa-finance" class="dropdown-item" data-category="usa-finance">🇺🇸 USA Finance</a>
+                            <a href="/category/banking" class="dropdown-item" data-category="banking">🏦 Banking & Wallets</a>
+                            <a href="/category/crypto" class="dropdown-item" data-category="crypto">₿ Crypto Updates</a>
+                            <a href="/category/gold" class="dropdown-item" data-category="gold">🥇 Gold & Silver</a>
+                            <a href="/category/stocks" class="dropdown-item" data-category="stocks">📈 Stock Market</a>
                             <a href="/category/earning" class="dropdown-item" data-category="earning">💻 Online Earning</a>
+                            <a href="/category/finance" class="dropdown-item" data-category="finance">💰 Personal Finance</a>
+                            <a href="/category/usa-finance" class="dropdown-item" data-category="usa-finance">🇺🇸 USA Finance</a>
+                            <a href="/category/mutual" class="dropdown-item" data-category="mutual">📊 Mutual Funds</a>
+                            <a href="/category/halal" class="dropdown-item" data-category="halal">☪️ Halal Investing</a>
                         </div>
                     </div>
                     
@@ -589,7 +605,7 @@
                 
                 container.innerHTML = featured.map(article => `
                     <div class="featured-card" data-id="${article.id}" data-slug="${article.slug}">
-                        <img src="${article.image}" alt="${article.title}" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.minHeight='200px';">
+                        <img src="${article.image}" alt="${article.title}" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.minHeight='200px';">
                         <div class="featured-card-content">
                             <span class="category-badge">${article.categoryName}</span>
                             <h3>${article.title}</h3>
@@ -812,35 +828,36 @@
 
                 // Global Link Interceptor
                 document.body.addEventListener('click', e => {
+                    // Check for internal links first
                     const link = e.target.closest('a');
-                    if (!link || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-                    
-                    const href = link.getAttribute('href');
-                    if (!href) return;
-
-                    // Handle internal links
-                    if (href.startsWith('/') || href.startsWith(window.location.origin)) {
-                        const path = href.startsWith('/') ? href : href.replace(window.location.origin, '');
-                        
-                        // Internal routing
-                        if (path === '/' || path.startsWith('/article/') || path.startsWith('/category/') || path.startsWith('/page/')) {
-                            e.preventDefault();
-                            history.pushState(null, '', path);
-                            router();
-                            return;
+                    if (link && e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
+                        const href = link.getAttribute('href');
+                        if (href && (href.startsWith('/') || href.startsWith(window.location.origin))) {
+                            const path = href.startsWith('/') ? href : href.replace(window.location.origin, '');
+                            if (path === '/' || path.startsWith('/article/') || path.startsWith('/category/') || path.startsWith('/page/')) {
+                                e.preventDefault();
+                                history.pushState(null, '', path);
+                                router();
+                                return;
+                            }
                         }
                     }
 
-                    // Handle card clicks that might have data-slug or data-category
-                    const card = e.target.closest('.article-card, .featured-card, .category-card');
-                    if (card) {
-                        e.preventDefault();
-                        if (card.dataset.slug) {
-                            history.pushState(null, '', `/article/${card.dataset.slug}`);
-                        } else if (card.dataset.category) {
-                            history.pushState(null, '', `/category/${card.dataset.category}`);
+                    // Handle card clicks (categories, articles, etc.)
+                    const card = e.target.closest('.article-card, .featured-card, .category-card, .related-link');
+                    if (card && e.button === 0) {
+                        const slug = card.dataset.slug;
+                        const cat = card.dataset.category;
+                        
+                        if (slug) {
+                            e.preventDefault();
+                            history.pushState(null, '', `/article/${slug}`);
+                            router();
+                        } else if (cat) {
+                            e.preventDefault();
+                            history.pushState(null, '', `/category/${cat}`);
+                            router();
                         }
-                        router();
                     }
                 });
 

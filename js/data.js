@@ -2653,9 +2653,13 @@ const articles = [
 ];
 
 const categories = [
-    { id: 'finance', name: 'Personal Finance', icon: '💰', desc: 'Budgeting, banking, and money management' },
-    { id: 'investing', name: 'Investing', icon: '📈', desc: 'Stock market, mutual funds, and gold analysis' },
-    { id: 'crypto', name: 'Cryptocurrency', icon: '₿', desc: 'Latest crypto news and market volatility' },
-    { id: 'usa-finance', name: 'USA Finance', icon: '🇺🇸', desc: 'US markets, taxes, and credit building' },
-    { id: 'earning', name: 'Online Earning', icon: '💻', desc: 'Side hustles and passive income ideas' }
+    { id: 'banking', name: 'Banking & Wallets', icon: '🏦', desc: 'Digital banking and payment solutions' },
+    { id: 'crypto', name: 'Crypto Updates', icon: '₿', desc: 'Latest cryptocurrency news and analysis' },
+    { id: 'gold', name: 'Gold & Silver', icon: '🥇', desc: 'Precious metals prices and tips' },
+    { id: 'stocks', name: 'Stock Market', icon: '📈', desc: 'Stock analysis and market updates' },
+    { id: 'earning', name: 'Online Earning', icon: '💻', desc: 'Freelancing and side hustles' },
+    { id: 'finance', name: 'Personal Finance', icon: '💰', desc: 'Budgeting and money management' },
+    { id: 'usa-finance', name: 'USA Finance', icon: '🇺🇸', desc: 'US financial markets and taxes' },
+    { id: 'mutual', name: 'Mutual Funds', icon: '📊', desc: 'Fund analysis and strategies' },
+    { id: 'halal', name: 'Halal Investing', icon: '☪️', desc: 'Shariah-compliant options' }
 ];
