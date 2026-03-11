@@ -4,17 +4,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://investmoney.online/logo.png">
     
-    <!-- Google AdSense - Lazy Loaded for Speed -->
+    <!-- AdSense Lazy Load (Fixes Infinite Loading) -->
     <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614";
-                script.crossOrigin = "anonymous";
-                document.head.appendChild(script);
-            }, 3000); // 3 second delay
-        });
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614';
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          document.head.appendChild(script);
+        }, 2500); // Wait 2.5 seconds before loading AdSense
+      });
     </script>
     <meta name="google-adsense-account" content="ca-pub-1589718392871614">
     
