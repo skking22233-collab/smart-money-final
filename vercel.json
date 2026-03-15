@@ -9,6 +9,10 @@
       "destination": "/robots.txt"
     },
     {
+      "source": "/364339144cc44f73900e58d07bc5a362.txt",
+      "destination": "/364339144cc44f73900e58d07bc5a362.txt"
+    },
+    {
       "source": "/article/:path*",
       "destination": "/index.html"
     },
