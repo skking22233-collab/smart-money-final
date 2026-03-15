@@ -1,4 +1,26 @@
 {
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/article/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/page/:path*",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
