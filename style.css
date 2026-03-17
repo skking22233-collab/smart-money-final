@@ -3,7 +3,8 @@
    Classic · Clean · Professional
    ================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Fonts are loaded in HTML for better performance */
+
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
