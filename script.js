@@ -8,9 +8,19 @@ function initMobileMenu() {
     const nav = document.getElementById('mainNav');
     const dropdown = document.getElementById('categoryDropdown');
     if (btn && nav) btn.onclick = () => nav.classList.toggle('active');
-    if (dropdown && window.innerWidth <= 768) {
+    
+    // Always bind dropdown toggle for mobile, CSS handles visibility breakpoints
+    if (dropdown) {
         const toggle = dropdown.querySelector('.dropdown-toggle');
-        if (toggle) toggle.onclick = e => { e.preventDefault(); dropdown.classList.toggle('active'); };
+        if (toggle) {
+            toggle.onclick = e => {
+                // Only prevent default and toggle on mobile-sized screens
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            };
+        }
     }
 }
 
@@ -55,9 +65,67 @@ function formatDate(d) {
     catch { return d; }
 }
 
+// ---- Gold Calculator ----
+function initGoldCalc() {
+    const amt = document.getElementById('goldAmount');
+    const bPrice = document.getElementById('buyPrice');
+    const cPrice = document.getElementById('currentPrice');
+    const result = document.getElementById('goldResultDisplay');
+    const profit = document.getElementById('goldProfitDisplay');
+
+    if (!amt || !bPrice || !cPrice || !result) return;
+
+    const calc = () => {
+        const amount = parseFloat(amt.value) || 0;
+        const buy = parseFloat(bPrice.value) || 0;
+        const current = parseFloat(cPrice.value) || 0;
+
+        if (buy <= 0) {
+            result.textContent = "$0.00";
+            profit.textContent = "Enter valid buy price";
+            return;
+        }
+
+        const ounces = amount / buy;
+        const totalValue = ounces * current;
+        const netProfit = totalValue - amount;
+        const percent = (netProfit / amount) * 100;
+
+        result.textContent = `$${totalValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        
+        if (netProfit >= 0) {
+            profit.style.color = "#22c55e";
+            profit.textContent = `Profit: +$${netProfit.toLocaleString(undefined, {minimumFractionDigits: 2})} (${percent.toFixed(1)}%)`;
+        } else {
+            profit.style.color = "#ef4444";
+            profit.textContent = `Loss: -$${Math.abs(netProfit).toLocaleString(undefined, {minimumFractionDigits: 2})} (${percent.toFixed(1)}%)`;
+        }
+    };
+
+    [amt, bPrice, cPrice].forEach(input => input.oninput = calc);
+    calc(); // initial run
+}
+
+// ---- Smooth Scroll ----
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.onclick = e => {
+            const id = anchor.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+    });
+}
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initNewsletterForms();
     initContactForm();
+    initGoldCalc();
+    initSmoothScroll();
 });

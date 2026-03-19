@@ -17,14 +17,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   <!-- Preload LCP Image -->
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop" imagesrcset="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop 1200w" imagesizes="(max-width: 600px) 640px, 1200px">
-  <script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614" crossorigin="anonymous"></script>
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+
 <header class="header">
   <div class="container">
     <div class="header-inner">
@@ -74,18 +74,12 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-left">
-        <p class="hero-label">Financial Intelligence Since 2025</p>
-        <h1>Make <em>smarter</em><br>money decisions</h1>
-        <p class="hero-desc">Daily insights on banking, crypto, stocks, gold, halal investing, and personal finance — written for real people building real wealth.</p>
-        <div class="hero-search">
-          <input type="text" id="heroSearchInput" placeholder="Search — Bitcoin, gold, budgeting…">
-          <button id="heroSearchBtn">Search</button>
-        </div>
-        <div class="hero-newsletter-mini" style="margin-top: 2rem; display: flex; align-items: center; gap: 12px;">
-          <form class="newsletter-form" id="heroNewsletterForm" style="display: flex; gap: 8px; width: 100%; max-width: 400px;">
-            <input type="email" placeholder="Get weekly finance tips..." required style="flex: 1; padding: 12px 16px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem;">
-            <button type="submit" style="background: #0d1b2a; color: #fff; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Subscribe</button>
-          </form>
+        <span class="category-badge" style="margin-bottom: 20px;">Financial Intelligence 2026</span>
+        <h1 style="font-family: var(--serif); font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px;">Navigate the New <span>Financial Frontier.</span></h1>
+        <p class="hero-desc" style="font-size: 1.15rem; color: var(--gray-700); margin-bottom: 32px;">Daily insights on banking, crypto, stocks, and rare metals. Built for the modern investor who values precision over hype.</p>
+        <div class="hero-btns" style="display: flex; gap: 16px;">
+          <a href="#featuredSection" class="btn btn-primary">Featured Analysis</a>
+          <a href="#calculators" class="btn btn-outline">Profit Calculator</a>
         </div>
       </div>
       <div class="hero-right">
@@ -94,7 +88,7 @@
        srcset="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600&auto=format&fit=crop 600w, 
                https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop 1200w" 
        sizes="(max-width: 600px) 100vw, 1200px"
-       fetchpriority="high"
+       fetchpriority="high" width="1200" height="600"
        alt="US Treasury Bonds 2026: Yield Analysis & Investment Guide" 
        onerror="this.style.background='#1a2e45';this.style.minHeight='180px'">
   <div class="hero-featured-body">
@@ -112,6 +106,39 @@
     </div>
   </div>
 </div>
+
+<!-- CALCULATOR SECTION -->
+<section id="calculators" class="calculator-section" style="padding: 100px 0; background: var(--white);">
+  <div class="container">
+    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+      <span class="section-label">Interactive Tools</span>
+      <h2 class="section-title">Gold Profit Estimator</h2>
+      <p style="color: var(--gray-500); max-width: 600px; margin: 15px auto 0;">Plan your physical and digital gold moves with our 2026 price tracker.</p>
+    </div>
+
+    <div class="calculator-card" style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+      <div class="calc-inputs" style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="calc-input-group">
+          <label for="goldAmount">Investment Amount ($)</label>
+          <input type="number" id="goldAmount" value="5000" placeholder="Enter amount">
+        </div>
+        <div class="calc-input-group">
+          <label for="buyPrice">Buy Price (per oz)</label>
+          <input type="number" id="buyPrice" value="2500" placeholder="Price when you bought">
+        </div>
+        <div class="calc-input-group">
+          <label for="currentPrice">Current Market Price ($)</label>
+          <input type="number" id="currentPrice" value="5124" placeholder="Current price">
+        </div>
+      </div>
+      <div class="calc-display" style="background: var(--navy); color: var(--white); padding: 40px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-lg);">
+        <p style="color: var(--gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 15px;">Estimated Portfolio Value</p>
+        <div id="goldResultDisplay" style="font-family: var(--serif); font-size: 3rem; font-weight: 700; margin-bottom: 10px;">$10,248.00</div>
+        <div id="goldProfitDisplay" style="color: #22c55e; font-weight: 600; font-size: 1.1rem;">Profit: +$5,248.00 (104.9%)</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CATEGORIES -->
 <div class="categories-section" id="categoriesSection">
@@ -173,7 +200,7 @@
     <div class="featured-grid">
       <a href="articles/bonds-treasuries-2026-yields-rising-iran-conflict.html" class="featured-card">
   <div class="featured-card-img-wrap">
-    <img class="featured-card-img" src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop" alt="US Treasury Bonds 2026: Yield Analysis & Investment Guide" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
+    <img class="featured-card-img" src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop" alt="US Treasury Bonds 2026: Yield Analysis & Investment Guide" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
   </div>
   <div class="featured-card-body">
     <span class="category-badge">Stock Market</span>
@@ -188,7 +215,7 @@
 </a>
 <a href="articles/oil-prices-2026-iran-war-investor-impact.html" class="featured-card">
   <div class="featured-card-img-wrap">
-    <img class="featured-card-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop" alt="Oil Price Forecast 2026: Supply & Demand Analysis" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
+    <img class="featured-card-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop" alt="Oil Price Forecast 2026: Supply & Demand Analysis" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
   </div>
   <div class="featured-card-body">
     <span class="category-badge">Stock Market</span>
@@ -203,7 +230,7 @@
 </a>
 <a href="articles/iran-war-2026-gold-prices-crossing-5000.html" class="featured-card">
   <div class="featured-card-img-wrap">
-    <img class="featured-card-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" alt="Gold Price Forecast 2026: Market Analysis & Trends" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
+    <img class="featured-card-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" alt="Gold Price Forecast 2026: Market Analysis & Trends" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
   </div>
   <div class="featured-card-body">
     <span class="category-badge">Gold & Silver</span>
@@ -218,7 +245,7 @@
 </a>
 <a href="articles/us-iran-war-impact-bitcoin-crash-2026.html" class="featured-card">
   <div class="featured-card-img-wrap">
-    <img class="featured-card-img" src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop" alt="Bitcoin Price Volatility 2026: Understanding Market Dynamics" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
+    <img class="featured-card-img" src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop" alt="Bitcoin Price Volatility 2026: Understanding Market Dynamics" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='180px'">
   </div>
   <div class="featured-card-body">
     <span class="category-badge">Crypto Updates</span>
@@ -254,9 +281,54 @@
       <div class="section-divider"></div>
     </div>
     <div class="articles-grid" id="articlesGrid">
+      <a href="articles/usa-tax-filing-masterclass-2026.html" class="article-card">
+  <div class="article-card-img-wrap">
+    <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=1200&auto=format&fit=crop" alt="2026 USA Tax Filing Masterclass: Maximize Your Refund & Avoid IRS Mistakes" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+  </div>
+  <div class="article-card-body">
+    <span class="category-badge">USA Finance</span>
+    <h3>2026 USA Tax Filing Masterclass: Maximize Your Refund & Avoid IRS Mistakes</h3>
+    <p>Learn how to maximize your 2026 tax refund, avoid common IRS mistakes, and use our deduction checklist before the April 15 deadline.</p>
+    <div class="article-meta">
+      <span>Smart Money Team</span>
+      <span class="meta-dot"></span>
+      <span>March 19, 2026</span>
+    </div>
+  </div>
+</a>
+<a href="articles/earn-100-daily-with-ai-agents-2026.html" class="article-card">
+  <div class="article-card-img-wrap">
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="7 Realistic Ways to Earn $100 a Day with AI Agents in 2026" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+  </div>
+  <div class="article-card-body">
+    <span class="category-badge">Online Earning</span>
+    <h3>7 Realistic Ways to Earn $100 a Day with AI Agents in 2026 (No Coding Required)</h3>
+    <p>Discover how to build AI income streams without coding using agents for customer support, lead generation, and social media management.</p>
+    <div class="article-meta">
+      <span>Smart Money Team</span>
+      <span class="meta-dot"></span>
+      <span>March 19, 2026</span>
+    </div>
+  </div>
+</a>
+<a href="articles/digital-gold-vs-physical-gold-2026.html" class="article-card">
+  <div class="article-card-img-wrap">
+    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" alt="Digital Gold vs. Real Gold: The Ultimate Safe Haven Comparison" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+  </div>
+  <div class="article-card-body">
+    <span class="category-badge">Gold & Silver</span>
+    <h3>Digital Gold vs. Real Gold: Which Is the Ultimate Safe Haven During the 2026 Global Crisis?</h3>
+    <p>Compare physical gold vs digital gold pros and cons in 2026. Learn which asset is safer during geopolitical uncertainty and inflation.</p>
+    <div class="article-meta">
+      <span>Smart Money Team</span>
+      <span class="meta-dot"></span>
+      <span>March 19, 2026</span>
+    </div>
+  </div>
+</a>
       <a href="articles/nvidia-gtc-2026-preview.html" class="article-card">
   <div class="article-card-img-wrap">
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Nvidia GTC 2026 Preview: What AI Announcements Could Mean for Investors This Week" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Nvidia GTC 2026 Preview: What AI Announcements Could Mean for Investors This Week" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
     <span class="category-badge">Stock Market</span>
@@ -271,7 +343,7 @@
 </a>
 <a href="articles/ai-infrastructure-boom-2026-power-nuclear-data-centers.html" class="article-card">
   <div class="article-card-img-wrap">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="AI Infrastructure Boom Continues: Why Power, Nuclear, and Data Centers Remain Hot in 2026" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="AI Infrastructure Boom Continues: Why Power, Nuclear, and Data Centers Remain Hot in 2026" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
     <span class="category-badge">Stock Market</span>
@@ -286,7 +358,7 @@
 </a>
 <a href="articles/inflation-2026-how-to-beat-rising-prices.html" class="article-card">
   <div class="article-card-img-wrap">
-    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop" alt="Inflation 2026: How to Beat Rising Prices and Actually Grow Your Money" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
+    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop" alt="Inflation 2026: How to Beat Rising Prices and Actually Grow Your Money" loading="lazy" width="1200" height="600" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
     <span class="category-badge">Personal Finance</span>
@@ -379,7 +451,7 @@
     <img src="https://images.unsplash.com/photo-1579621970795-87fca3f55051?q=80&w=1200&auto=format&fit=crop" alt="How to Invest $1,000 in the USA in 2026 — 7 Smart Options for Beginners" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Invest $1,000 in the USA in 2026 — 7 Smart Options for Beginners</h3>
     <p>Got $1,000 and want to grow it in 2026? Discover the best way to invest $1,000 right now in the US, from …</p>
     <div class="article-meta">
@@ -394,7 +466,7 @@
     <img src="https://images.unsplash.com/photo-1591115765373-520b7a3d7266?q=80&w=1200&auto=format&fit=crop" alt="How to Start Investing at 18 in the USA — Complete Beginner's Guide (2026)" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Start Investing at 18 in the USA — Complete Beginner's Guide (2026)</h3>
     <p>Turning 18 is your biggest financial superpower. Learn how to start investing at 18 in USA, the best inve…</p>
     <div class="article-meta">
@@ -409,7 +481,7 @@
     <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop" alt="Boost Your Credit Score by 100 Points Fast in 2026 (Proven Steps)" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>Boost Your Credit Score by 100 Points Fast in 2026 (Proven Steps)</h3>
     <p>Want a 100-point credit score boost? Discover the 2026 secret loophole to raise your score fast through u…</p>
     <div class="article-meta">
@@ -424,7 +496,7 @@
     <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=1200&auto=format&fit=crop" alt="Debt Snowball vs Avalanche: Which Method Saves You More Money in 2026?" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>Debt Snowball vs Avalanche: Which Method Saves You More Money in 2026?</h3>
     <p>Struggling with debt? We reveal the 2026 winner between Debt Snowball and Debt Avalanche. Save thousands …</p>
     <div class="article-meta">
@@ -439,7 +511,7 @@
     <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?w=800&h=400&fit=crop" alt="How to Fix Bad Credit Fast in the USA — 6 Steps That Work in 2026" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Fix Bad Credit Fast in the USA — 6 Steps That Work in 2026</h3>
     <p>Looking to improve your credit score quickly in 2026? Learn the fastest ways to fix bad credit in the USA…</p>
     <div class="article-meta">
@@ -454,7 +526,7 @@
     <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&h=400&fit=crop" alt="How to Build Credit From Zero in the USA (2026 Step-by-Step Guide)" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Build Credit From Zero in the USA (2026 Step-by-Step Guide)</h3>
     <p>Starting from zero? Learn how to build credit from 0 in the USA with our step-by-step 2026 guide for rece…</p>
     <div class="article-meta">
@@ -469,7 +541,7 @@
     <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=400&fit=crop" alt="Stop Living Paycheck to Paycheck in 2026 — 8 Steps That Actually Work" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>Stop Living Paycheck to Paycheck in 2026 — 8 Steps That Actually Work</h3>
     <p>Stop the paycheck-to-paycheck cycle in 2026 with our practical playbook. Learn how real people like Jake …</p>
     <div class="article-meta">
@@ -484,7 +556,7 @@
     <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&h=400&fit=crop" alt="How to Build an Emergency Fund in America" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Build an Emergency Fund in America</h3>
     <p>Building an emergency fund in America doesn't have to be overwhelming. Follow our 2026 step-by-step guide…</p>
     <div class="article-meta">
@@ -499,7 +571,7 @@
     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop" alt="7 Best Free Budgeting Apps in USA for Beginners - 2026 Honest Review" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>7 Best Free Budgeting Apps in USA for Beginners - 2026 Honest Review</h3>
     <p>We tested 20+ budgeting apps and ranked the top 7 free tools for Americans in 2026. Stop overspending today.</p>
     <div class="article-meta">
@@ -514,7 +586,7 @@
     <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=600&fit=crop" alt="How to Save $5,000 in One Year in the USA (2026 Guide)" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>How to Save $5,000 in One Year in the USA (2026 Guide)</h3>
     <p>Want to learn how to save $5000 in a year USA? Our simple guide provides an easy savings plan to reach $5…</p>
     <div class="article-meta">
@@ -529,7 +601,7 @@
     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop" alt="Master Your Money: How to Create a Monthly Budget in the USA (2026 Guide)" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>Master Your Money: How to Create a Monthly Budget in the USA (2026 Guide)</h3>
     <p>Learn how to create a realistic monthly budget in the USA for 2026. From the 50/30/20 rule to top budgeti…</p>
     <div class="article-meta">
@@ -544,7 +616,7 @@
     <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=400&fit=crop" alt="Master the 50/30/20 Rule: Best Budgeting Strategy for Americans in 2026" loading="lazy" onerror="this.style.background='#e8e4d9';this.style.minHeight='160px'">
   </div>
   <div class="article-card-body">
-    <span class="category-badge">USA-Finance</span>
+    <span class="category-badge">USA Finance</span>
     <h3>Master the 50/30/20 Rule: Best Budgeting Strategy for Americans in 2026</h3>
     <p>Unlock financial freedom in 2026 with the 50/30/20 rule. Learn how to split your USA income between needs…</p>
     <div class="article-meta">
@@ -830,6 +902,7 @@
     </div>
   </div>
 </div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1589718392871614" crossorigin="anonymous"></script>
 
 <div class="newsletter-section">
   <div class="newsletter-inner">
@@ -991,6 +1064,6 @@ window.addEventListener('load', function() {
 })();
 });
 </script>
-<script src="/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
