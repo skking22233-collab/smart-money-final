@@ -121,6 +121,29 @@ function initSmoothScroll() {
     });
 }
 
+// ---- Cookie Consent Banner ----
+function initCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    const accept = document.getElementById('acceptCookies');
+    const decline = document.getElementById('declineCookies');
+    
+    if (!banner || !accept || !decline) return;
+
+    if (!localStorage.getItem('cookieConsent')) {
+        banner.style.display = 'flex';
+    }
+
+    accept.onclick = () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.style.display = 'none';
+    };
+
+    decline.onclick = () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        banner.style.display = 'none';
+    };
+}
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
@@ -128,4 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initGoldCalc();
     initSmoothScroll();
+    initCookieBanner();
 });
