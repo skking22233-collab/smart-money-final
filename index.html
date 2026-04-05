@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -39,20 +39,7 @@
       </a>
       <nav class="nav" id="mainNav">
         <a href="/" class="nav-link active">Home</a>
-        <div class="dropdown" id="categoryDropdown">
-          <a href="#" class="nav-link dropdown-toggle">Categories <span class="arrow">â–¼</span></a>
-          <div class="dropdown-menu">
-            <a href="index.html?category=banking"    class="dropdown-item">ðŸ¦ Banking &amp; Wallets</a>
-            <a href="index.html?category=crypto"     class="dropdown-item">â‚¿ Crypto Updates</a>
-            <a href="index.html?category=gold"       class="dropdown-item">ðŸ¥‡ Gold &amp; Silver</a>
-            <a href="index.html?category=stocks"     class="dropdown-item">ðŸ“ˆ Stock Market</a>
-            <a href="index.html?category=earning"    class="dropdown-item">ðŸ’» Online Earning</a>
-            <a href="index.html?category=finance"    class="dropdown-item">ðŸ’° Personal Finance</a>
-            <a href="index.html?category=usa-finance" class="dropdown-item">ðŸ‡ºðŸ‡¸ USA Finance</a>
-            <a href="index.html?category=mutual"     class="dropdown-item">ðŸ“Š Mutual Funds</a>
-            <a href="index.html?category=halal"      class="dropdown-item">â˜ªï¸ Halal Investing</a>
-          </div>
-        </div>
+        <a href="pages/calculator.html" class="nav-link">Calculator</a>
         <a href="pages/about.html"      class="nav-link">About</a>
         <a href="pages/contact.html"    class="nav-link">Contact</a>
         <a href="pages/disclaimer.html" class="nav-link">Disclaimer</a>
@@ -78,8 +65,8 @@
         <h1 style="font-family: var(--serif); font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px;">Navigate the New <span>Financial Frontier.</span></h1>
         <p class="hero-desc" style="font-size: 1.15rem; color: var(--gray-700); margin-bottom: 32px;">Daily insights on banking, crypto, stocks, and rare metals. Built for the modern investor who values precision over hype.</p>
         <div class="hero-btns" style="display: flex; gap: 16px;">
-          <a href="#featuredSection" class="btn btn-primary">Featured Analysis</a>
-          <a href="#calculators" class="btn btn-outline">Profit Calculator</a>
+          <a href="#articlesSection" class="btn btn-primary">Latest Articles</a>
+          <a href="pages/calculator.html" class="btn btn-outline">Profit Calculator</a>
         </div>
       </div>
       <div class="hero-right">
@@ -103,88 +90,6 @@
   </div>
 </a>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- CALCULATOR SECTION -->
-<section id="calculators" class="calculator-section" style="padding: 100px 0; background: var(--white);">
-  <div class="container">
-    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
-      <span class="section-label">Interactive Tools</span>
-      <h2 class="section-title">Gold Profit Estimator</h2>
-      <p style="color: var(--gray-500); max-width: 600px; margin: 15px auto 0;">Plan your physical and digital gold moves with our 2026 price tracker.</p>
-    </div>
-
-    <div class="calculator-card" style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-      <div class="calc-inputs" style="display: flex; flex-direction: column; gap: 24px;">
-        <div class="calc-input-group">
-          <label for="goldAmount">Investment Amount ($)</label>
-          <input type="number" id="goldAmount" value="5000" placeholder="Enter amount">
-        </div>
-        <div class="calc-input-group">
-          <label for="buyPrice">Buy Price (per oz)</label>
-          <input type="number" id="buyPrice" value="2500" placeholder="Price when you bought">
-        </div>
-        <div class="calc-input-group">
-          <label for="currentPrice">Current Market Price ($)</label>
-          <input type="number" id="currentPrice" value="5124" placeholder="Current price">
-        </div>
-      </div>
-      <div class="calc-display" style="background: var(--navy); color: var(--white); padding: 40px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-lg);">
-        <p style="color: var(--gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 15px;">Estimated Portfolio Value</p>
-        <div id="goldResultDisplay" style="font-family: var(--serif); font-size: 3rem; font-weight: 700; margin-bottom: 10px;">$10,248.00</div>
-        <div id="goldProfitDisplay" style="color: #22c55e; font-weight: 600; font-size: 1.1rem;">Profit: +$5,248.00 (104.9%)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<div class="categories-section" id="categoriesSection">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Browse by topic</span>
-      <h2 class="section-title">Explore Categories</h2>
-      <div class="section-divider"></div>
-    </div>
-    <div class="categories-grid">
-      <a href="index.html?category=banking" class="category-card" data-category="banking">
-  <div class="category-icon-wrap">ðŸ¦</div>
-  <div class="category-info"><h3>Banking & Wallets</h3><p>Digital banking, e-wallets & payments</p></div>
-</a>
-<a href="index.html?category=crypto" class="category-card" data-category="crypto">
-  <div class="category-icon-wrap">â‚¿</div>
-  <div class="category-info"><h3>Crypto Updates</h3><p>Cryptocurrency news & market analysis</p></div>
-</a>
-<a href="index.html?category=gold" class="category-card" data-category="gold">
-  <div class="category-icon-wrap">ðŸ¥‡</div>
-  <div class="category-info"><h3>Gold & Silver</h3><p>Precious metals prices & investment tips</p></div>
-</a>
-<a href="index.html?category=stocks" class="category-card" data-category="stocks">
-  <div class="category-icon-wrap">ðŸ“ˆ</div>
-  <div class="category-info"><h3>Stock Market</h3><p>Stock analysis & market updates</p></div>
-</a>
-<a href="index.html?category=earning" class="category-card" data-category="earning">
-  <div class="category-icon-wrap">ðŸ’»</div>
-  <div class="category-info"><h3>Online Earning</h3><p>Freelancing, side hustles & passive income</p></div>
-</a>
-<a href="index.html?category=finance" class="category-card" data-category="finance">
-  <div class="category-icon-wrap">ðŸ’°</div>
-  <div class="category-info"><h3>Personal Finance</h3><p>Budgeting, saving & money management</p></div>
-</a>
-<a href="index.html?category=usa-finance" class="category-card" data-category="usa-finance">
-  <div class="category-icon-wrap">ðŸ‡ºðŸ‡¸</div>
-  <div class="category-info"><h3>USA Finance</h3><p>US markets, taxes & retirement</p></div>
-</a>
-<a href="index.html?category=mutual" class="category-card" data-category="mutual">
-  <div class="category-icon-wrap">ðŸ“Š</div>
-  <div class="category-info"><h3>Mutual Funds</h3><p>Fund analysis & investment strategies</p></div>
-</a>
-<a href="index.html?category=halal" class="category-card" data-category="halal">
-  <div class="category-icon-wrap">â˜ªï¸</div>
-  <div class="category-info"><h3>Halal Investing</h3><p>Shariah-compliant investment options</p></div>
-</a>
     </div>
   </div>
 </div>

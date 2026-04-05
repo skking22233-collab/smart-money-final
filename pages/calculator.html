@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator — Smart Money</title>
+  <meta name="description" content="Calculate your investment profits with Smart Money's interactive tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <div class="logo-icon-wrap"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Smart Money Logo">
+  <path d="M12 2L13.09 8.26L19 6L15.45 11L21 12.5L15.45 14L19 19L13.09 15.74L12 22L10.91 15.74L5 19L8.55 14L3 12.5L8.55 11L5 6L10.91 8.26L12 2Z" fill="#0d1b2a" stroke="none"/>
+</svg></div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Smart<span>Money</span></span>
+          <span class="logo-tagline">Your Trusted Guide to Financial Freedom</span>
+        </div>
+      </a>
+      <nav class="nav" id="mainNav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="calculator.html" class="nav-link active">Calculator</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding: 120px 0;">
+    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+      <span class="section-label">Interactive Tools</span>
+      <h1 class="section-title" style="font-family: var(--serif); font-size: 3rem;">Gold Profit Estimator</h1>
+      <p style="color: var(--gray-500); max-width: 600px; margin: 15px auto 0;">Plan your physical and digital gold moves with our 2026 price tracker.</p>
+    </div>
+
+    <div class="calculator-card" style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+      <div class="calc-inputs" style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="calc-input-group">
+          <label for="goldAmount">Investment Amount ($)</label>
+          <input type="number" id="goldAmount" value="5000" placeholder="Enter amount">
+        </div>
+        <div class="calc-input-group">
+          <label for="buyPrice">Buy Price (per oz)</label>
+          <input type="number" id="buyPrice" value="2500" placeholder="Price when you bought">
+        </div>
+        <div class="calc-input-group">
+          <label for="currentPrice">Current Market Price ($)</label>
+          <input type="number" id="currentPrice" value="5124" placeholder="Current price">
+        </div>
+      </div>
+      <div class="calc-display" style="background: var(--navy); color: var(--white); padding: 40px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-lg);">
+        <p style="color: var(--gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 15px;">Estimated Portfolio Value</p>
+        <div id="goldResultDisplay" style="font-family: var(--serif); font-size: 3rem; font-weight: 700; margin-bottom: 10px;">$10,248.00</div>
+        <div id="goldProfitDisplay" style="color: #22c55e; font-weight: 600; font-size: 1.1rem;">Profit: +$5,248.00 (104.9%)</div>
+      </div>
+    </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Smart Money. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
