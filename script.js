@@ -162,58 +162,6 @@ function initReadingProgress() {
 }
 
 // ---- Adsterra Ads Injection (Global) ----
-function initAdsterraAds() {
-    // 1. Social Bar & Popunder (Globally injected into <head>)
-    const headScripts = [
-        "https://pl28680033.profitablecpmratenetwork.com/8e/46/4a/8e464a2352f522e2c1e0c1a87b69c06d.js", // Social Bar
-        "https://pl28679686.profitablecpmratenetwork.com/d1/b5/a2/d1b5a2fcff6a7ff021d340fdbea8eb23.js"  // Popunder
-    ];
-
-    headScripts.forEach(src => {
-        const s = document.createElement('script');
-        s.src = src;
-        s.async = true;
-        document.head.appendChild(s);
-    });
-
-    // 2. Native Banner (Context-aware injection)
-    const containerId = "container-d43df2ea917c17ebeb5f1aebb20e05c1";
-    const scriptSrc = "https://pl28680503.profitablecpmratenetwork.com/d43df2ea917c17ebeb5f1aebb20e05c1/invoke.js";
-
-    // Detect best placement
-    let insertionPoint = null;
-    
-    // In articles: after key takeaways (High Engagement)
-    const takeaways = document.querySelector('.key-takeaways');
-    if (takeaways) {
-        insertionPoint = takeaways;
-    } 
-    // On Homepage: between Featured and Latest (High Traffic)
-    else {
-        const featured = document.getElementById('featuredSection');
-        if (featured) insertionPoint = featured;
-    }
-
-    if (insertionPoint) {
-        const wrapper = document.createElement('div');
-        wrapper.style.cssText = "margin: 30px auto; text-align: center; width: 100%; max-width: 1200px;";
-        
-        const adContainer = document.createElement('div');
-        adContainer.id = containerId;
-        
-        const adScript = document.createElement('script');
-        adScript.async = true;
-        adScript.dataset.cfasync = "false";
-        adScript.src = scriptSrc;
-
-        wrapper.appendChild(adScript);
-        wrapper.appendChild(adContainer);
-        
-        // Insert after the point for better visibility
-        insertionPoint.parentNode.insertBefore(wrapper, insertionPoint.nextSibling);
-    }
-}
-
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
@@ -223,5 +171,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initCookieBanner();
     initReadingProgress();
-    initAdsterraAds();
 });
