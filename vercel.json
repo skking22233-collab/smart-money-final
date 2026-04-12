@@ -1,0 +1,51 @@
+{
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/articles/:slug",
+      "destination": "/articles/:slug.html"
+    },
+    {
+      "source": "/pages/:slug",
+      "destination": "/pages/:slug.html"
+    },
+    {
+      "source": "/article/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/page/:path*",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
