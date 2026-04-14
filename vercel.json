@@ -17,8 +17,8 @@
       "destination": "/pages/:slug.html"
     },
     {
-      "source": "/article/:path*",
-      "destination": "/index.html"
+      "source": "/article/:slug",
+      "destination": "/articles/:slug.html"
     },
     {
       "source": "/category/:path*",
