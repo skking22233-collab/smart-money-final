@@ -157,6 +157,7 @@ function initReadingProgress() {
     window.onscroll = () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
         bar.style.width = scrolled + "%";
     };
 }
